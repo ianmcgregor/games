@@ -1,0 +1,65 @@
+#   OS
+
+._*
+.DS_Store
+.DS_Store?
+.AppleDouble
+Icon?
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+
+#   VCS
+
+.svn
+*.orig
+!.gitinclude
+
+
+#   IDE
+
+.settings/*
+.project
+user.properties
+.idea?
+.metadata/*
+*.ignore
+*.sublime-*
+*~
+*.swp
+*.swo
+.actionScriptProperties
+
+
+#	PROJECT
+
+bin/*
+lib/temp/*
+lib/*
+
+
+#   BINARIES
+
+*.mp4
+*.webm
+*.ogv
+*.mov
+*.f4v
+*.flv
+*.mp3
+*.wav
+*.ogg
+*.fla
+*.psd
+*.swf
+*.apk
+*.ipa
+*.air
+*.pyc
+*.png
+*.jpg
+*.tps
+*.pex

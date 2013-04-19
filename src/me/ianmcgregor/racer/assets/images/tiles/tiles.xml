@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:cf7d7b5356ef7549ed016053c3815a3f$ -->
+<TextureAtlas imagePath="tiles.png">
+    <SubTexture name="00_offroad" x="2" y="2" width="122" height="113"/>
+    <SubTexture name="01_straight" x="126" y="2" width="122" height="113"/>
+    <SubTexture name="02_straight" x="250" y="2" width="122" height="113"/>
+    <SubTexture name="03_curve" x="374" y="2" width="122" height="113"/>
+    <SubTexture name="04_curve" x="2" y="117" width="122" height="113"/>
+    <SubTexture name="05_curve" x="126" y="117" width="122" height="113"/>
+    <SubTexture name="06_curve" x="250" y="117" width="122" height="113"/>
+    <SubTexture name="07_start" x="374" y="117" width="122" height="113"/>
+    <SubTexture name="08_start" x="2" y="232" width="122" height="113"/>
+    <SubTexture name="09_chicane" x="126" y="232" width="122" height="113"/>
+    <SubTexture name="10_chicane" x="250" y="232" width="122" height="113"/>
+    <SubTexture name="11_changelane" x="374" y="232" width="122" height="113"/>
+    <SubTexture name="12_changelane" x="2" y="347" width="122" height="113"/>
+    <SubTexture name="13_ramp" x="126" y="347" width="122" height="113"/>
+    <SubTexture name="14_ramp" x="250" y="347" width="122" height="113"/>
+    <SubTexture name="15_ramp" x="374" y="347" width="122" height="113"/>
+    <SubTexture name="16_ramp" x="2" y="462" width="122" height="113"/>
+    <SubTexture name="17_crossroads" x="126" y="462" width="122" height="113"/>
+    <SubTexture name="18_bridge" x="250" y="462" width="122" height="113"/>
+    <SubTexture name="18_bridge_top" x="374" y="462" width="122" height="113"/>
+    <SubTexture name="19_bridge" x="2" y="577" width="122" height="113"/>
+    <SubTexture name="19_bridge_top" x="126" y="577" width="122" height="113"/>
+    <SubTexture name="20_arrow_1" x="250" y="577" width="122" height="113"/>
+    <SubTexture name="21_arrow_3" x="374" y="577" width="122" height="113"/>
+    <SubTexture name="22_arrow_5" x="2" y="692" width="122" height="113"/>
+    <SubTexture name="23_arrow_7" x="126" y="692" width="122" height="113"/>
+    <SubTexture name="24_button1_up" x="250" y="692" width="122" height="113"/>
+    <SubTexture name="25_button1_down" x="374" y="692" width="122" height="113"/>
+    <SubTexture name="26_button2_up" x="2" y="807" width="122" height="113"/>
+    <SubTexture name="27_button2_down" x="126" y="807" width="122" height="113"/>
+</TextureAtlas>

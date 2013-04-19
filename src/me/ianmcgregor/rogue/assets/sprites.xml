@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:8c8268aa2278210ea79ea0b1070d89da$ -->
+<TextureAtlas imagePath="sprites.png">
+    <SubTexture name="btn_1_down" x="2" y="2" width="52" height="52"/>
+    <SubTexture name="btn_1_up" x="56" y="2" width="52" height="52"/>
+    <SubTexture name="btn_2_down" x="110" y="2" width="52" height="52"/>
+    <SubTexture name="btn_2_up" x="164" y="2" width="52" height="52"/>
+    <SubTexture name="dpad" x="2" y="56" width="92" height="92"/>
+    <SubTexture name="dpad2" x="96" y="56" width="92" height="92"/>
+    <SubTexture name="dpad_184" x="2" y="150" width="184" height="184"/>
+</TextureAtlas>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?><!--ant-->
+
+<project name="ant tasks" basedir=".">
+
+	<property file="user.properties" />
+	<property file="project.properties" />
+
+	<!-- SDK properties ======================================================================== -->
+	
+	<condition property="mxmlc" value="${FLEX_HOME}/bin/mxmlc" else="${FLEX_HOME_WIN}/bin/mxmlc.exe">
+		<os family="mac"/>
+	</condition>
+
+	<condition property="compc" value="${FLEX_HOME}/bin/compc" else="${FLEX_HOME_WIN}/bin/compc.exe">
+		<os family="mac"/>
+	</condition>
+	
+	<condition property="fcsh" value="${FLEX_HOME}/bin/fsch" else="${FLEX_HOME_WIN}/bin/fsch.exe">
+		<os family="mac"/>
+	</condition>
+	
+	<condition property="asdoc" value="${FLEX_HOME}/bin/asdoc" else="${FLEX_HOME_WIN}/bin/asdoc.exe">
+		<os family="mac"/>
+	</condition>
+	
+	<condition property="flex" value="${FLEX_HOME}/frameworks/libs/" else="${FLEX_HOME_WIN}/frameworks/libs">
+		<os family="mac"/>
+	</condition>
+	
+	
+	
+	<!-- Web compiling ======================================================================== -->
+	
+	<target name="compile_web">
+		<exec executable="${mxmlc}" failonerror="true">
+			<arg line="-static-link-runtime-shared-libraries=true"/>
+			<arg line="-output ${bin.dir}/web/Main.swf"/>
+			<arg line="${src.dir}/Main.as"/>
+			<arg line="-library-path ${flex}/core.swc"/>
+			<arg line="-source-path ${lib.dir}/artemis"/>
+			<arg line="-source-path ${lib.dir}/starling"/>
+			<arg line="-source-path ${lib.dir}/starling-particle-system"/>
+			<arg line="-source-path ${lib.dir}/feathers/src"/>
+			<arg line="-library-path ${lib.dir}/MinimalComps_0_9_10.swc"/>
+			<arg line="-library-path ${lib.dir}/sion/sion065.swc"/>
+			<arg line="-library-path ${lib.dir}/nape/nape-release.swc"/>
+			<arg line="-swf-version=18"/>
+		</exec>
+	</target>
+	
+	<!-- Font compiling ======================================================================== -->
+	<!--	
+		<target name="compile_regional_font_western">
+				<exec executable="${mxmlc}" failonerror="true">
+					<arg line="-output ${runtimeassets.dir}/assets/fonts/FontWestern.swf"/>
+					<arg line="${compiledassets.dir}/style-definitions/FontWestern.as"/>
+					<arg line="-source-path ${STINK_LIBRARY_DIR}"/>
+				</exec>
+			</target>
+		
+		<target name="compile_regional_font_eastern">
+			<exec executable="${mxmlc}" failonerror="true">
+				<arg line="-output ${runtimeassets.dir}/assets/fonts/FontEastern.swf"/>
+				<arg line="${compiledassets.dir}/style-definitions/FontEastern.as"/>
+				<arg line="-source-path ${STINK_LIBRARY_DIR}"/>
+			</exec>
+		</target>
+	-->
+	<!-- Debug ========================================================================= -->
+
+	<!--
+	<target name="debug_copy_assets"  description="Copies files from runtime_assets to bin-debug and bin-debug">
+
+		<copy todir="${bindebug.dir}">
+
+			<fileset dir="${runtimeassets.dir}">
+				<exclude name="**/_svn/**"/>
+				<exclude name="**/.svn/**"/>
+			</fileset>
+			
+			<filterset begintoken="%" endtoken="%">
+				<filter token="version" value=""/>
+			</filterset>
+
+		</copy>
+
+	</target>
+	-->
+			
+
+	<!-- Release ======================================================================= -->
+	<!--
+	<target name="release_copy_assets" description="Copies files from runtime_assets to release directory">
+
+		<copy todir="${LEXUS_DARKRIDE_RELEASE_DIR}">
+
+			<fileset dir="${runtimeassets.dir}">
+				<exclude name="**/_svn/**"/>
+				<exclude name="**/.svn/**"/>
+			</fileset>	
+
+			<filterset begintoken="%" endtoken="%">
+				<filter token="version" value=""/>
+			</filterset>
+			
+		</copy>
+
+	</target>
+	
+	<target name="release_copy_bin" description="Copies files from bin-debug to release directory">
+
+		<copy todir="${LEXUS_DARKRIDE_RELEASE_DIR}">
+
+			<fileset dir="${bindebug.dir}">
+				<exclude name="**/_svn/**"/>
+				<exclude name="**/.svn/**"/>
+			</fileset>	
+
+			<filterset begintoken="%" endtoken="%">
+				<filter token="version" value=""/>
+			</filterset>
+		</copy>
+
+	</target>
+	
+	<target name="CDN_deploy_assets"  description="Copies files from runtime_assets to bin-debug and bin-debug">
+		
+		<property name="cdn_version" value="1"/>
+		
+		<echo>CDN version number: ${cdn_version}</echo>
+		
+		<delete dir="${bindebug.dir}" />
+		
+		<copy todir="${bindebug.dir}" >
+			
+			<fileset dir="${runtimeassets.dir}">
+				<exclude name="**/_svn/**"/>
+				<exclude name="**/.svn/**"/>
+			</fileset>
+			
+			<regexpmapper from="(.*)\.(.*)" to="\1.\v${cdn_version}.\2"/>
+			
+		</copy>
+		
+
+	</target>
+	
+	<target name="str_replace">
+		<tstamp>
+			<format property="timestamp" pattern="yymmddhhmm"/>
+		</tstamp>
+		<property name="version" value="${timestamp}"/>
+		<copy file="testreplace.xml" tofile="testreplaced.xml"/>
+		<replace file="testreplaced.xml" token="@@version@@" value="${version}" />	
+	</target>
+	-->
+	
+</project>
