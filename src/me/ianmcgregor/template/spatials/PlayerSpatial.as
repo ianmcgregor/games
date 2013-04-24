@@ -67,8 +67,8 @@ package me.ianmcgregor.template.spatials {
 		 */
 		override public function render(g : GameContainer) : void {
 			g;
-			_gfx.x = _transform.x;
-			_gfx.y = _transform.y;
+			_gfx.x = _transform.x + _gfx.pivotX;
+			_gfx.y = _transform.y + _gfx.pivotY;
 			_gfx.rotation = _transform.rotation;
 		}
 

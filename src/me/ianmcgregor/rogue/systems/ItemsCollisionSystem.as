@@ -48,15 +48,6 @@ package me.ianmcgregor.rogue.systems {
 		}
 
 		/**
-		 * begin 
-		 * 
-		 * @return 
-		 */
-		override protected function begin() : void {
-			super.begin();
-		}
-
-		/**
 		 * processEntity 
 		 * 
 		 * @param e 

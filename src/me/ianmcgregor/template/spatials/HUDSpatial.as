@@ -1,4 +1,7 @@
 package me.ianmcgregor.template.spatials {
+	import me.ianmcgregor.template.constants.Constants;
+	import starling.textures.TextureAtlas;
+	import me.ianmcgregor.template.constants.EntityTag;
 	import me.ianmcgregor.games.artemis.components.TransformComponent;
 	import me.ianmcgregor.games.artemis.spatials.Spatial;
 	import me.ianmcgregor.games.base.GameContainer;
@@ -58,9 +61,14 @@ package me.ianmcgregor.template.spatials {
 			var hudMapper : ComponentMapper = new ComponentMapper(HUDComponent, _world);
 			_hudComponent = hudMapper.get(_owner);
 			/**
+			 * isTwoPlayer
+			 */
+			var isTwoPlayer: Boolean = _world.getTagManager().getEntity(EntityTag.PLAYER_2) != null;
+			/**
 			 * _gfx
 			 */
-			if(!_gfx)_gfx = new HUDGfx(g.getWidth(), g.getHeight());
+			var textureAtlas: TextureAtlas = g.assets.getTextureAtlas(Constants.NULL);
+			_gfx = new HUDGfx(g.getWidth(), g.getHeight(), textureAtlas, isTwoPlayer);
 			g.addChild(_gfx);
 		}
 

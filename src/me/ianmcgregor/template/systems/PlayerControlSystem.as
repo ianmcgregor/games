@@ -4,6 +4,7 @@ package me.ianmcgregor.template.systems {
 	import me.ianmcgregor.games.base.GameContainer;
 	import me.ianmcgregor.games.input.IKeyInput;
 	import me.ianmcgregor.template.components.PlayerComponent;
+	import me.ianmcgregor.template.components.VelocityComponent;
 	import me.ianmcgregor.template.constants.KeyConstants;
 
 	import com.artemis.ComponentMapper;
@@ -28,6 +29,7 @@ package me.ianmcgregor.template.systems {
 		private var _playerMapper : ComponentMapper;
 		private var _weaponMapper : ComponentMapper;
 		private var _transformMapper : ComponentMapper;
+		private var _velocityMapper : ComponentMapper;
 		/**
 		 * _timeNow
 		 */
@@ -54,6 +56,7 @@ package me.ianmcgregor.template.systems {
 		override public function initialize() : void {
 			_playerMapper = new ComponentMapper(PlayerComponent, _world);
 			_transformMapper = new ComponentMapper(TransformComponent, _world);
+			_velocityMapper = new ComponentMapper(VelocityComponent, _world);
 			_weaponMapper = new ComponentMapper(WeaponComponent, _world);
 		}
 
@@ -66,12 +69,6 @@ package me.ianmcgregor.template.systems {
 		 */
 		override protected function added(e : Entity) : void {
 			super.added(e);
-			
-			/**
-			 * heroComponent 
-			 */
-			var playerComponent: PlayerComponent = _playerMapper.get(e);
-			playerComponent;
 		}
 
 		/**
@@ -104,15 +101,16 @@ package me.ianmcgregor.template.systems {
 		 */
 		override protected function processEntity(e : Entity) : void {
 			/**
-			 * heroComponent 
+			 * player 
 			 */
-			var playerComponent: PlayerComponent = _playerMapper.get(e);
+			var player: PlayerComponent = _playerMapper.get(e);
+			var velocity: VelocityComponent = _velocityMapper.get(e);
 			var transform: TransformComponent = _transformMapper.get(e);
 			
 			/**
 			 * player1 
 			 */
-			var player1: Boolean = playerComponent.playerNum == 1;
+			var player1: Boolean = player.playerNum == 1;
 			/**
 			 * left 
 			 */
@@ -132,38 +130,42 @@ package me.ianmcgregor.template.systems {
 			/**
 			 * shoot 
 			 */
-			var shoot: Boolean = player1 ? _input.isDown(KeyConstants.SHOOT_P1) : _input.isDown(KeyConstants.SHOOT_P2);
-			shoot;
+			var shoot: Boolean = player1 ? _input.justPressed(KeyConstants.SHOOT_P1) : _input.justPressed(KeyConstants.SHOOT_P2);
 			/**
 			 * movement 
 			 */
-			var increment: Number = 2;
+			var increment: Number = _world.getDelta() * 20;
+			var dampening: Number = 1 - _world.getDelta() * 10;
 			
 			if (left) {
-				transform.addX(-increment);
+				if(velocity.getX() > 0) velocity.setX(0);
+				velocity.addX(-increment);
 			} else if (right) {
-				transform.addX(increment);
+				if(velocity.getX() < 0) velocity.setX(0);
+				velocity.addX(increment);
+			} else {
+				velocity.dampenX(dampening);
 			}
 			if (up) {
-				transform.addY(-increment);
+				if(velocity.getY() > 0) velocity.setY(0);
+				velocity.addY(-increment);
 			} else if (down) {
-				transform.addY(increment);
+				if(velocity.getY() < 0) velocity.setY(0);
+				velocity.addY(increment);
+			} else {
+				velocity.dampenY(dampening);
 			}
+			
+			// update transform
+			transform.addX(velocity.getX());
+			transform.addY(velocity.getY());
 			
 			/**
 			 * weapon 
 			 */
 //			var weapon : WeaponComponent = _weaponMapper.get(e);
-//			if (_input.isDown(Keyboard.SPACE)  && weapon.getShotAt() + 100 < _timeNow) {
-//			if (shoot && weapon.getShotAt() + 0.1 < _timeNow) {
-				/**
-				 * bullet 
-				 */
-//				var bullet: Entity = EntityFactory.createBullet(_world, e);
-//				TransformComponent(bullet.getComponent(TransformComponent)).setLocation(physicsComponent.body.position.x, physicsComponent.body.position.y);
-//				bullet.refresh();
-//				weapon.setShotAt(_timeNow);
-//			}
+			if (shoot) {//&& weapon.getShotAt() + 0.3 < _timeNow) {
+			}
 		}
 	}
 }

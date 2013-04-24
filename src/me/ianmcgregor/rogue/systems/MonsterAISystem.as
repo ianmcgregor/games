@@ -74,28 +74,11 @@ package me.ianmcgregor.rogue.systems {
 			_aStar = new AStar();
 			_rayCast = new RayCaster();
 		}
-
 		/**
-		 * added 
+		 * rayCast 
 		 * 
-		 * @param e
-		 * 
-		 * @return 
+		 * @return Boolean
 		 */
-		override protected function added(e : Entity) : void {
-			super.added(e);
-//			var transform: TransformComponent = _transformMapper.get(e);
-//			var monster: MonsterComponent = _monsterMapper.get(e);
-//			trace('_world.getTagManager().getEntity(EntityTag.LEVEL): ' + (_world.getTagManager().getEntity(EntityTag.LEVEL)));
-			//findPath(transform, monster);
-
-			
-//			var success: Boolean = rayCast(e, transform, monster, 80, 50);
-//			if(success) {
-//				findPath(e, transform, monster, toX, toY);
-//			}
-		}
-
 		private function rayCast(e : Entity, transform : TransformComponent, monster : MonsterComponent, toX: Number, toY: Number) : Boolean {
 			monster;
 			var success: Boolean;
@@ -161,17 +144,6 @@ package me.ianmcgregor.rogue.systems {
 					Starling.current.nativeStage.addChild(s);
 				}
 			}
-		}
-
-		/**
-		 * removed 
-		 * 
-		 * @param e
-		 * 
-		 * @return 
-		 */
-		override protected function removed(e : Entity) : void {
-			super.removed(e);
 		}
 
 		/**

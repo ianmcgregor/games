@@ -136,16 +136,6 @@ package me.ianmcgregor.rogue.systems {
 		}
 
 		/**
-		 * begin 
-		 * 
-		 * @return 
-		 */
-		override protected function begin() : void {
-			// _someComponent = _someMapper.get(_world.getTagManager().getEntity(EntityTag.SOME_TAG));
-			// var bag: IImmutableBag = _world.getGroupManager().getEntities(EntityGroup.SOME_GROUP);
-		}
-
-		/**
 		 * processEntity 
 		 * 
 		 * @param e 

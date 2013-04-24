@@ -18,8 +18,8 @@ package me.ianmcgregor.template.spatials.gfx {
 		private const TITLE_TEXT : String = "TEMPLATE GAME"; 
 		private const ONE_PLAYER : String = "ONE PLAYER";
 		private const TWO_PLAYER : String = "TWO PLAYER";
-		private const INFO_TEXT_1 : String = "PLAYER ONE:\nCONTROLS"; 
-		private const INFO_TEXT_2 : String = "PLAYER TWO:\nCONTROLS"; 
+		private const INFO_TEXT_1 : String = "PLAYER ONE:\nWASD + SPACE"; 
+		private const INFO_TEXT_2 : String = "PLAYER TWO:\nARROWS + CTRL"; 
 		
 		/**
 		 * TitlesGfx 

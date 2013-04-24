@@ -1,4 +1,4 @@
-package me.ianmcgregor.rogue.components {
+package me.ianmcgregor.template.components {
 	import com.artemis.Component;
 
 	/**

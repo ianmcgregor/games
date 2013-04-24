@@ -36,7 +36,6 @@ package me.ianmcgregor.rogue.factories {
 	import me.ianmcgregor.rogue.spatials.MessageSpatial;
 	import me.ianmcgregor.rogue.spatials.MonsterBulletSpatial;
 	import me.ianmcgregor.rogue.spatials.MonsterSpatial;
-	import me.ianmcgregor.rogue.spatials.NullSpatial;
 	import me.ianmcgregor.rogue.spatials.PlayerSpatial;
 	import me.ianmcgregor.rogue.spatials.SpatterSpatial;
 	import me.ianmcgregor.rogue.spatials.SwordSpatial;
@@ -440,26 +439,6 @@ package me.ianmcgregor.rogue.factories {
 			e.addComponent(new SwordComponent(owner));
 //			e.addComponent(new ExpiresComponent(0.5));
 			e.addComponent(new CollisionComponent(-32, 0, 64, 32));
-			e.refresh();
-
-			return e;
-		}
-		
-		/**
-		 * createEntity 
-		 * 
-		 * @param _world 
-		 * 
-		 * @return 
-		 */
-		public static function createEntity(_world : World) : Entity {
-			var e : Entity;
-			
-			e = _world.createEntity();
-			e.setTag(EntityTag.NULL);
-			e.setGroup(EntityGroup.NULL);
-			e.addComponent(new SpatialFormComponent(NullSpatial));
-			e.addComponent(new TransformComponent(0, 0));
 			e.refresh();
 
 			return e;

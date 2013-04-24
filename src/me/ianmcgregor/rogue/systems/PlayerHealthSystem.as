@@ -59,34 +59,6 @@ package me.ianmcgregor.rogue.systems {
 		}
 
 		/**
-		 * added 
-		 * 
-		 * @param e
-		 * 
-		 * @return 
-		 */
-		override protected function added(e : Entity) : void {
-			super.added(e);
-			
-			/**
-			 * heroComponent 
-			 */
-//			var playerComponent: PlayerComponent = _playerMapper.get(e);
-//			playerComponent;
-		}
-
-		/**
-		 * removed 
-		 * 
-		 * @param e
-		 * 
-		 * @return 
-		 */
-		override protected function removed(e : Entity) : void {
-			super.removed(e);
-		}
-
-		/**
 		 * begin 
 		 * 
 		 * @return 

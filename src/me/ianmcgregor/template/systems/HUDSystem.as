@@ -1,6 +1,9 @@
 package me.ianmcgregor.template.systems {
+	import me.ianmcgregor.games.artemis.components.HealthComponent;
 	import me.ianmcgregor.games.base.GameContainer;
 	import me.ianmcgregor.template.components.HUDComponent;
+	import me.ianmcgregor.template.components.PlayerComponent;
+	import me.ianmcgregor.template.constants.EntityTag;
 
 	import com.artemis.ComponentMapper;
 	import com.artemis.Entity;
@@ -18,6 +21,9 @@ package me.ianmcgregor.template.systems {
 		 * mappers 
 		 */
 		private var _hudMapper : ComponentMapper;
+		private var _hudComponent : HUDComponent;
+		private var _healthMapper : ComponentMapper;
+		private var _playerMapper : ComponentMapper;
 
 		/**
 		 * SoundSystem 
@@ -27,7 +33,7 @@ package me.ianmcgregor.template.systems {
 		 * @return 
 		 */
 		public function HUDSystem(g : GameContainer) {
-			super(HUDComponent, []);
+			super(PlayerComponent, []);
 			_g = g;
 		}
 
@@ -38,6 +44,8 @@ package me.ianmcgregor.template.systems {
 		 */
 		override public function initialize() : void {
 			_hudMapper = new ComponentMapper(HUDComponent, _world);
+			_playerMapper = new ComponentMapper(PlayerComponent, _world);
+			_healthMapper = new ComponentMapper(HealthComponent, _world);
 		}
 
 		/**
@@ -49,12 +57,6 @@ package me.ianmcgregor.template.systems {
 		 */
 		override protected function added(e : Entity) : void {
 			super.added(e);
-			
-			/**
-			 * hudComponent 
-			 */
-			var hudComponent: HUDComponent = _hudMapper.get(e);
-			hudComponent;
 		}
 
 		/**
@@ -75,6 +77,7 @@ package me.ianmcgregor.template.systems {
 		 */
 		override protected function begin() : void {
 			super.begin();
+			_hudComponent = _hudMapper.get(_world.getTagManager().getEntity(EntityTag.HUD));
 		}
 
 		/**
@@ -85,11 +88,9 @@ package me.ianmcgregor.template.systems {
 		 * @return 
 		 */
 		override protected function processEntity(e : Entity) : void {
-			/**
-			 * hudComponent 
-			 */
-			var hudComponent: HUDComponent = _hudMapper.get(e);
-			hudComponent;
+			var p: PlayerComponent = _playerMapper.get(e);
+			var h: HealthComponent = _healthMapper.get(e);
+			_hudComponent.player[p.playerNum].health = h.getHealthPercentage();
 		}
 	}
 }

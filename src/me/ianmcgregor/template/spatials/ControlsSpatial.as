@@ -4,9 +4,9 @@ package me.ianmcgregor.template.spatials {
 	import me.ianmcgregor.games.input.IKeyInput;
 	import me.ianmcgregor.games.input.controls.Dpad;
 	import me.ianmcgregor.games.input.controls.KeyButton;
-	import me.ianmcgregor.rogue.components.GameConfigComponent;
-	import me.ianmcgregor.rogue.constants.EntityTag;
-	import me.ianmcgregor.rogue.constants.KeyConstants;
+	import me.ianmcgregor.template.components.GameConfigComponent;
+	import me.ianmcgregor.template.constants.EntityTag;
+	import me.ianmcgregor.template.constants.KeyConstants;
 
 	import starling.events.Event;
 	import starling.events.KeyboardEvent;

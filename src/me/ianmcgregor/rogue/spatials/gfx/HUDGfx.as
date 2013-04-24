@@ -2,7 +2,6 @@ package me.ianmcgregor.rogue.spatials.gfx {
 	import me.ianmcgregor.rogue.components.InventoryComponent;
 
 	import starling.display.Sprite;
-	import starling.text.TextField;
 	import starling.textures.TextureAtlas;
 
 	/**
@@ -10,13 +9,8 @@ package me.ianmcgregor.rogue.spatials.gfx {
 	 */
 	public final class HUDGfx extends Sprite {
 		/**
-		 * _text 
+		 * players 
 		 */
-		private var _text : String;
-		/**
-		 * _textField 
-		 */
-		private var _textField : TextField;
 		private var _player1 : PlayerHUD;
 		private var _player2 : PlayerHUD;
 		/**
@@ -47,25 +41,6 @@ package me.ianmcgregor.rogue.spatials.gfx {
 			p.updateTreasure(inventory.treasure);
 			p.updateItems(inventory.getItems());
 			p.updateHealth(health);
-		}
-		
-		public function addItem(texture: String):  void {
-			
-		}
-		
-		public function removeItem(): void {
-			
-		}
-
-		/**
-		 * @private
-		 */
-		public function set text(newText : String) : void {
-			if(newText == _text) return;
-			_text = newText;
-			unflatten();
-			_textField.text = _text;
-			flatten();
 		}
 	}
 }

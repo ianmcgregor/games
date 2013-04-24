@@ -57,17 +57,6 @@ package me.ianmcgregor.rogue.systems {
 		}
 
 		/**
-		 * removed 
-		 * 
-		 * @param e
-		 * 
-		 * @return 
-		 */
-		override protected function removed(e : Entity) : void {
-			super.removed(e);
-		}
-
-		/**
 		 * begin 
 		 * 
 		 * @return 

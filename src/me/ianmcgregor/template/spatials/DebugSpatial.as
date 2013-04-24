@@ -72,6 +72,8 @@ package me.ianmcgregor.template.spatials {
 				 */
 				var artemisMonitor : ArtemisMonitor;
 				_gfx.addChild(artemisMonitor = new ArtemisMonitor(_world, g));
+				
+				//_gfx.visible = false;
 			}
 		}
 

@@ -1,4 +1,6 @@
 package me.ianmcgregor.template.spatials.gfx {
+	import starling.display.Image;
+	import starling.textures.Texture;
 	import starling.display.Quad;
 	import starling.display.Sprite;
 
@@ -9,15 +11,19 @@ package me.ianmcgregor.template.spatials.gfx {
 		/**
 		 * NullGfx 
 		 */
-		public function NullGfx() {
+		public function NullGfx(texture: Texture = null) {
 			super();
 			
 			/**
 			 * gfx 
 			 */
-			var gfx: Quad = new Quad(100, 100);
-			gfx.color = 0xFF0000;
-			addChild(gfx);
+			if(texture) {
+				addChild(new Image(texture));
+			} else {
+				var gfx: Quad = new Quad(100, 100);
+				gfx.color = 0xFF0000;
+				addChild(gfx);
+			}
 			
 			pivotX = width * 0.5;
 			pivotY = height * 0.5;

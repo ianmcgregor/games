@@ -17,13 +17,11 @@ package me.ianmcgregor.rogue.contexts {
 	import me.ianmcgregor.rogue.systems.MonsterAISystem;
 	import me.ianmcgregor.rogue.systems.MonsterSystem;
 	import me.ianmcgregor.rogue.systems.MoveableSystem;
-	import me.ianmcgregor.rogue.systems.NullSystem;
 	import me.ianmcgregor.rogue.systems.PlayerControlSystem;
 	import me.ianmcgregor.rogue.systems.PlayerHealthSystem;
 	import me.ianmcgregor.rogue.systems.SoundSystem;
 	import me.ianmcgregor.rogue.systems.TileSystem;
 	import me.ianmcgregor.rogue.systems.TitlesSystem;
-	import me.ianmcgregor.rogue.systems.WeaponCollisionSystem;
 
 	import com.artemis.EntitySystem;
 	import com.artemis.SystemManager;
@@ -49,7 +47,6 @@ package me.ianmcgregor.rogue.contexts {
 		private var _titlesSystem : EntitySystem;
 		private var _gameOverSystem : EntitySystem;
 		private var _hudSystem : EntitySystem;
-		private var _nullSystem : EntitySystem;
 		private var _debugSystem : EntitySystem;
 		private var _gameConfigSystem : EntitySystem;
 		private var _playerControlSystem : EntitySystem;
@@ -58,7 +55,6 @@ package me.ianmcgregor.rogue.contexts {
 		private var _tileSystem : EntitySystem;
 		private var _itemsCollisionSystem : EntitySystem;
 		private var _monsterAISystem : EntitySystem;
-		private var _weaponCollisionSystem : EntitySystem;
 		private var _expirationSystem : EntitySystem;
 		private var _bulletCollisionSystem : EntitySystem;
 		private var _playerHealthSystem : EntitySystem;
@@ -98,7 +94,6 @@ package me.ianmcgregor.rogue.contexts {
 			_titlesSystem = systemManager.setSystem(new TitlesSystem(_g));
 			_gameOverSystem = systemManager.setSystem(new GameOverSystem(_g));
 			_hudSystem = systemManager.setSystem(new HUDSystem(_g));
-			_nullSystem = systemManager.setSystem(new NullSystem(_g));
 			_debugSystem = systemManager.setSystem(new DebugSystem(_g));
 			_playerControlSystem = systemManager.setSystem(new PlayerControlSystem(_g));
 			_collisionSystem = systemManager.setSystem(new CollisionSystem(_g));
@@ -106,7 +101,6 @@ package me.ianmcgregor.rogue.contexts {
 			_tileSystem = systemManager.setSystem(new TileSystem(_g));
 			_itemsCollisionSystem = systemManager.setSystem(new ItemsCollisionSystem(_g));
 			_monsterAISystem = systemManager.setSystem(new MonsterAISystem(_g));
-			_weaponCollisionSystem = systemManager.setSystem(new WeaponCollisionSystem(_g));
 			_expirationSystem = systemManager.setSystem(new ExpirationSystem());
 			_bulletCollisionSystem = systemManager.setSystem(new BulletCollisionSystem(_g));
 			_playerHealthSystem = systemManager.setSystem(new PlayerHealthSystem(_g));
@@ -157,7 +151,6 @@ package me.ianmcgregor.rogue.contexts {
 					_gameConfigSystem.process();
 					break;
 				case State.PLAY:
-					_nullSystem.process();
 					_hudSystem.process();
 					_playerControlSystem.process();
 					_monsterAISystem.process();
@@ -166,7 +159,6 @@ package me.ianmcgregor.rogue.contexts {
 					_itemsCollisionSystem.process();
 					_collisionSystem.process();
 					_tileSystem.process();
-					_weaponCollisionSystem.process();
 					_expirationSystem.process();
 					_bulletCollisionSystem.process();
 					_playerHealthSystem.process();
