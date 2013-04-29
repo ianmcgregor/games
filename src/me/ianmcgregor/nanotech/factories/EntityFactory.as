@@ -28,7 +28,6 @@ package me.ianmcgregor.nanotech.factories {
 	import me.ianmcgregor.nanotech.spatials.HeroSpatial;
 	import me.ianmcgregor.nanotech.spatials.TitlesSpatial;
 	import me.ianmcgregor.nanotech.spatials.gfx.SiONSounds;
-	import me.ianmcgregor.pong.components.CollisionRect;
 
 	import com.artemis.Entity;
 	import com.artemis.World;
@@ -172,8 +171,7 @@ package me.ianmcgregor.nanotech.factories {
 			
 			e = _world.createEntity();
 //			e.addComponent(new SpatialFormComponent(WallSpatial));
-			e.addComponent(new TransformComponent(x, y));
-			e.addComponent(new CollisionRect(x, y, width, height));
+			e.addComponent(new TransformComponent(x, y, width, height));
 			e.addComponent(new PhysicsComponent(Constants.WALL, BodyFactory.createWall(x, y, width, height)));
 			e.refresh();
 

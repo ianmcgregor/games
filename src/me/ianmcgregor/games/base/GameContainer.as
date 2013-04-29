@@ -1,4 +1,5 @@
 package me.ianmcgregor.games.base {
+	import flash.geom.Point;
 	import me.ianmcgregor.games.input.IKeyInput;
 	import me.ianmcgregor.games.input.KeyInput;
 
@@ -35,7 +36,10 @@ package me.ianmcgregor.games.base {
 		 * state 
 		 */
 		public var state : String;
-		
+		/**
+		 * camera
+		 */
+		public const camera : Point = new Point();
 		/**
 		 * GameContainer 
 		 * 

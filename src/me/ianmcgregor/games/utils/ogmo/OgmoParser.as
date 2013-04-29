@@ -3,6 +3,7 @@ package me.ianmcgregor.games.utils.ogmo {
 
 	import me.ianmcgregor.games.utils.astar.Grid;
 
+	import flash.geom.Point;
 	import flash.system.System;
 	import flash.utils.ByteArray;
 	import flash.utils.Dictionary;
@@ -60,6 +61,12 @@ package me.ianmcgregor.games.utils.ogmo {
 					parseXML(null, rawAsset as XML);
 				}
 			}
+			
+			_levelList.sort(sortBehaviour);
+		}
+		
+		private function sortBehaviour(a: OgmoLevel, b: OgmoLevel) : int {
+			return a.name > b.name ? 1 : -1;
 		}
 		
 		/**
@@ -94,6 +101,9 @@ package me.ianmcgregor.games.utils.ogmo {
 		public function parseXML(name : String, xml : XML) : void {
 			if (!name) name = xml.localName();
 			var level : OgmoLevel = _levelMap[name] = _levelList[_levelList.length] = new OgmoLevel(name);
+			level.width = uint(xml.attribute("width"));
+			level.height = uint(xml.attribute("height"));
+			level.camera = parseCamera(xml);
 			level.grid = parseGrid(xml);
 			level.tiles = parseTiles(xml);
 			level.nodes = parseNodes(level.grid[0].length, level.grid.length);
@@ -190,6 +200,21 @@ package me.ianmcgregor.games.utils.ogmo {
 				map.put(entity);
 			}
 			return map;
+		}
+		/**
+		 * parseCamera 
+		 * 
+		 * @param xml 
+		 * 
+		 * @return Point 
+		 */
+		private function parseCamera(xml : XML) : Point {
+			var cam : Point = new Point();
+			var cameraNode : XML = xml.child("camera")[0];
+			if (!cameraNode) return cam;
+			cam.x = uint(cameraNode.attribute("x"));
+			cam.y = uint(cameraNode.attribute("y"));
+			return cam;
 		}
 
 		/**

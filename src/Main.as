@@ -1,7 +1,7 @@
 package {
+	import me.ianmcgregor.chicks.Chicks;
+	import me.ianmcgregor.chicks.assets.Assets;
 	import me.ianmcgregor.games.base.BaseStartup;
-	import me.ianmcgregor.rogue.Rogue;
-	import me.ianmcgregor.rogue.assets.Assets;
 
 	import flash.utils.getTimer;
 
@@ -9,7 +9,7 @@ package {
 	 * @author McFamily
 	 */
 //	[SWF(width="800", height="480", frameRate="60", backgroundColor="#383228")]
-	[SWF(width="1024", height="768", frameRate="60", backgroundColor="#383228")]
+	[SWF(width="1024", height="640", frameRate="60", backgroundColor="#383228")]
 	// species
 //	[SWF(width="640", height="480", frameRate="60", backgroundColor="#000000")]
 	// racer
@@ -21,7 +21,8 @@ package {
 //			super(Nanotech, 1024, 768, org.alwaysinbeta.nanotech.assets.Assets);
 //			super(Species, 640, 480);
 //			super(Pong, 960, 640);
-			super(Rogue, 1024, 768, me.ianmcgregor.rogue.assets.Assets);
+//			super(Rogue, 1024, 768, me.ianmcgregor.rogue.assets.Assets);
+			super(Chicks, 1024, 640, me.ianmcgregor.chicks.assets.Assets);
 
 //			testA();
 //			testB();

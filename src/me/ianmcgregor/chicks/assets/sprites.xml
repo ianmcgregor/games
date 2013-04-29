@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:35c5cd326492cc0a74a8b96e607c1a76$ -->
+<TextureAtlas imagePath="sprites.png">
+    <SubTexture name="background1" x="2" y="1286" width="1024" height="640"/>
+    <SubTexture name="ball" x="386" y="1962" width="32" height="32"/>
+    <SubTexture name="btn_1_down" x="298" y="1982" width="52" height="52"/>
+    <SubTexture name="btn_1_up" x="256" y="1928" width="52" height="52"/>
+    <SubTexture name="btn_2_down" x="244" y="1994" width="52" height="52"/>
+    <SubTexture name="btn_2_up" x="190" y="1994" width="52" height="52"/>
+    <SubTexture name="chick" x="352" y="1996" width="32" height="32"/>
+    <SubTexture name="chick2" x="378" y="1928" width="32" height="32"/>
+    <SubTexture name="chick3" x="352" y="1962" width="32" height="32"/>
+    <SubTexture name="cloud" x="2" y="2022" width="32" height="24" frameX="0" frameY="-4" frameWidth="32" frameHeight="32"/>
+    <SubTexture name="dpad" x="96" y="1928" width="92" height="92"/>
+    <SubTexture name="dpad2" x="2" y="1928" width="92" height="92"/>
+    <SubTexture name="egg" x="412" y="1928" width="26" height="32" frameX="-3" frameY="0" frameWidth="32" frameHeight="32"/>
+    <SubTexture name="end" x="2" y="644" width="1024" height="640"/>
+    <SubTexture name="ground" x="344" y="1928" width="32" height="32"/>
+    <SubTexture name="mama" x="190" y="1928" width="64" height="64"/>
+    <SubTexture name="title" x="2" y="2" width="1024" height="640"/>
+    <SubTexture name="wire" x="310" y="1928" width="32" height="32"/>
+</TextureAtlas>

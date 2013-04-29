@@ -175,14 +175,13 @@ package me.ianmcgregor.nanotech.systems {
 					physicsComponent.body.velocity.length = maxVelocity;
 				}
 			} else {
-				// dampening: 1 = no dampening 0 = total dampening
 				/**
-				 * dampening 
+				 * dampening : 1 = no dampening 0 = total dampening
 				 */
-				var dampening : Number = 0.5;
 				/**
 				 * damp 
 				 */
+				var dampening : Number = 0.5;
 				var damp : Number = Math.pow(dampening, _world.getDelta());
 				physicsComponent.body.velocity.muleq(damp);
 				physicsComponent.body.angularVel *= damp;

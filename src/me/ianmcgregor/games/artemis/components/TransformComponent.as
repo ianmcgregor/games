@@ -12,21 +12,23 @@ package me.ianmcgregor.games.artemis.components {
 	 */
 	public final class TransformComponent extends Component {
 		/**
-		 * _x 
+		 * x, y 
 		 */
-		private var _x : Number;
+		public var x : Number;
+		public var y : Number;
 		/**
-		 * _y 
+		 * width, height 
 		 */
-		private var _y : Number;
+		public var width : Number;
+		public var height : Number;
 		/**
 		 * _rotation 
 		 */
-		private var _rotation : Number;
+		public var rotation : Number;
 		/**
 		 * _scale 
 		 */
-		private var _scale : Number;
+		public var scale : Number;
 
 		/**
 		 * TransformComponent 
@@ -37,11 +39,14 @@ package me.ianmcgregor.games.artemis.components {
 		 * 
 		 * @return 
 		 */
-		public function TransformComponent(x : Number = 0, y : Number = 0, rotation : Number = 0, scale: Number = 1) {
-			_x = x;
-			_y = y;
-			_rotation = rotation;
-			_scale = scale;
+
+		public function TransformComponent(x : Number = 0, y : Number = 0, width : Number = 0, height : Number = 0, rotation : Number = 0, scale : Number = 1) {
+			this.x = x;
+			this.y = y;
+			this.width = width;
+			this.height = height;
+			this.rotation = rotation;
+			this.scale = scale;
 		}
 
 		/**
@@ -52,7 +57,7 @@ package me.ianmcgregor.games.artemis.components {
 		 * @return 
 		 */
 		public function addX(x : Number) : void {
-			_x += x;
+			this.x += x;
 		}
 
 		/**
@@ -63,35 +68,7 @@ package me.ianmcgregor.games.artemis.components {
 		 * @return 
 		 */
 		public function addY(y : Number) : void {
-			_y += y;
-		}
-
-		/**
-		 * x 
-		 */
-		public function get x() : Number {
-			return _x;
-		}
-
-		/**
-		 * @private
-		 */
-		public function set x(x : Number) : void {
-			_x = x;
-		}
-
-		/**
-		 * y 
-		 */
-		public function get y() : Number {
-			return _y;
-		}
-
-		/**
-		 * @private
-		 */
-		public function set y(y : Number) : void {
-			_y = y;
+			this.y += y;
 		}
 
 		/**
@@ -103,22 +80,8 @@ package me.ianmcgregor.games.artemis.components {
 		 * @return 
 		 */
 		public function setLocation(x : Number, y : Number) : void {
-			_x = x;
-			_y = y;
-		}
-
-		/**
-		 * rotation 
-		 */
-		public function get rotation() : Number {
-			return _rotation;
-		}
-
-		/**
-		 * @private
-		 */
-		public function set rotation(rotation : Number) : void {
-			_rotation = rotation;
+			this.x = x;
+			this.y = y;
 		}
 
 		/**
@@ -129,7 +92,7 @@ package me.ianmcgregor.games.artemis.components {
 		 * @return 
 		 */
 		public function addRotation(angle : Number) : void {
-			_rotation = (_rotation + angle) % 360;
+			this.rotation = (this.rotation + angle) % 360;
 		}
 
 		/**
@@ -138,7 +101,7 @@ package me.ianmcgregor.games.artemis.components {
 		 * @return 
 		 */
 		public function getRotationAsRadians() : Number {
-			return Utils.toRadians(_rotation);
+			return Utils.toRadians(this.rotation);
 		}
 
 		/**
@@ -149,23 +112,7 @@ package me.ianmcgregor.games.artemis.components {
 		 * @return 
 		 */
 		public function getDistanceTo(t : TransformComponent) : Number {
-			return Utils.distance(t.x, t.y, _x, _y);
-		}
-
-		/**
-		 * scale 
-		 */
-		public function get scale() : Number {
-			return _scale;
-		}
-
-		/**
-		 * set scale
-		 * 
-		 * @param scale
-		 */
-		public function set scale(scale: Number) : void {
-			_scale = scale;
+			return Utils.distance(t.x, t.y, this.x, this.y);
 		}
 	}
 }

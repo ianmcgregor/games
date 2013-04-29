@@ -4,7 +4,6 @@ package me.ianmcgregor.nanotech.spatials {
 	import me.ianmcgregor.games.base.GameContainer;
 	import me.ianmcgregor.nanotech.assets.particles.ParticleAssets;
 	import me.ianmcgregor.nanotech.spatials.gfx.ParticleGfx;
-	import me.ianmcgregor.pong.components.CollisionRect;
 
 	import starling.display.Sprite;
 	import starling.textures.Texture;
@@ -25,7 +24,6 @@ package me.ianmcgregor.nanotech.spatials {
 		 * _gfx 
 		 */
 		private var _gfx : Sprite;
-		private var _rect : CollisionRect;
 //		private var _gfx : ParticleGfx;
 		
 		public function WallSpatial(world : World, owner : Entity) {
@@ -46,10 +44,6 @@ package me.ianmcgregor.nanotech.spatials {
 			var transformMapper : ComponentMapper = new ComponentMapper(TransformComponent, _world);
 			_transform = transformMapper.get(_owner);
 			
-			var rectMapper : ComponentMapper = new ComponentMapper(CollisionRect, _world);
-			_rect = rectMapper.get(_owner);
-			
-			
 			/**
 			 * gfx
 			 */
@@ -66,8 +60,8 @@ package me.ianmcgregor.nanotech.spatials {
 			var currY: Number = _transform.y;
 			if(currY < 0) currY = 0;
 			if(currY > g.getHeight()) currY = g.getHeight();
-			var maxX: Number = _rect.rect.width;
-			var maxY: Number = _rect.rect.height;
+			var maxX: Number = _transform.width;
+			var maxY: Number = _transform.height;
 			var spacing : Number = 50;
 			
 			if(maxX > maxY) {

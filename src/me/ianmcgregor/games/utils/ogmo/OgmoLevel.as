@@ -1,11 +1,14 @@
 package me.ianmcgregor.games.utils.ogmo {
+	import flash.geom.Point;
 	import me.ianmcgregor.games.utils.astar.Grid;
 	/**
 	 * @author ianmcgregor
 	 */
 	public final class OgmoLevel {
 		public var name : String;
-		// TODO: maybe grid should be Boolean instead or 1/0?
+		public var width : uint;
+		public var height : uint;
+		public var camera : Point;
 		public var grid : Vector.<Vector.<Boolean>>;
 		public var tiles : Vector.<Vector.<uint>>;
 		public var nodes : Grid;

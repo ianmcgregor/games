@@ -42,11 +42,11 @@ package me.ianmcgregor.rogue.systems {
 		 */
 		private var _levels : OgmoParser;
 		private var _level : OgmoLevel;
+		private var _currentLevel : uint;
 		/**
 		 * _initStep
 		 */
 		private var _initStep : int;
-		private var _currentLevel : uint;
 		private var _prevState : String;
 		
 		/**
