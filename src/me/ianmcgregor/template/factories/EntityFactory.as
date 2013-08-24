@@ -1,4 +1,5 @@
 package me.ianmcgregor.template.factories {
+	import me.ianmcgregor.games.artemis.components.ExpiresComponent;
 	import me.ianmcgregor.games.artemis.components.HealthComponent;
 	import me.ianmcgregor.games.artemis.components.SpatialFormComponent;
 	import me.ianmcgregor.games.artemis.components.TransformComponent;
@@ -7,10 +8,14 @@ package me.ianmcgregor.template.factories {
 	import me.ianmcgregor.template.components.GameConfigComponent;
 	import me.ianmcgregor.template.components.GameOverComponent;
 	import me.ianmcgregor.template.components.HUDComponent;
+	import me.ianmcgregor.template.components.PhysicsComponent;
 	import me.ianmcgregor.template.components.PlayerComponent;
 	import me.ianmcgregor.template.components.TitlesComponent;
+	import me.ianmcgregor.template.components.VelocityComponent;
+	import me.ianmcgregor.template.constants.Constants;
 	import me.ianmcgregor.template.constants.EntityGroup;
 	import me.ianmcgregor.template.constants.EntityTag;
+	import me.ianmcgregor.template.spatials.BgSpatial;
 	import me.ianmcgregor.template.spatials.ControlsSpatial;
 	import me.ianmcgregor.template.spatials.DebugSpatial;
 	import me.ianmcgregor.template.spatials.GameOverSpatial;
@@ -64,6 +69,24 @@ package me.ianmcgregor.template.factories {
 			e = _world.createEntity();
 			e.setTag(EntityTag.GAME_CONFIG);
 			e.addComponent(new GameConfigComponent());
+			e.refresh();
+
+			return e;
+		}
+		
+		/**
+		 * createBg 
+		 * 
+		 * @param _world 
+		 * 
+		 * @return 
+		 */
+		public static function createBg(_world : World) : Entity {
+			var e : Entity;
+			
+			e = _world.createEntity();
+			e.addComponent(new SpatialFormComponent(BgSpatial));
+			e.addComponent(new TransformComponent(0, 0));
 			e.refresh();
 
 			return e;
@@ -136,14 +159,14 @@ package me.ianmcgregor.template.factories {
 		 * 
 		 * @return 
 		 */
-		public static function createPlayer(_world : World, playerNum: int) : Entity {
+		public static function createPlayer(_world : World, playerNum: int, x: Number, y: Number) : Entity {
 			var e : Entity;
 			
 			e = _world.createEntity();
 			e.setTag( ( playerNum == 1 ? EntityTag.PLAYER_1 : EntityTag.PLAYER_2 ) );
 			e.addComponent(new PlayerComponent(playerNum));
 			e.addComponent(new SpatialFormComponent(PlayerSpatial));
-			e.addComponent(new TransformComponent(350 * playerNum, 220));
+			e.addComponent(new TransformComponent(x, y));
 			e.addComponent(new WeaponComponent());
 			e.addComponent(new HealthComponent(1));
 			e.refresh();
@@ -186,6 +209,31 @@ package me.ianmcgregor.template.factories {
 			e.addComponent(new TransformComponent(0, 0));
 			e.refresh();
 
+			return e;
+		}
+
+		/**
+		 * createBullet 
+		 * 
+		 * @param _world 
+		 * 
+		 * @return 
+		 */
+		public static function createBullet(_world : World, owner: Entity) : Entity {
+			var e : Entity;
+			
+			e = _world.createEntity();
+//			e.setGroup(EntityGroup.BULLET);
+//			e.addComponent(new SpatialFormComponent(BulletSpatial));
+//			e.addComponent(new TransformComponent(0, 0));
+//			e.addComponent(new PhysicsComponent(Constants.BULLET, BodyFactory.createBullet()));
+//			e.addComponent(new BulletComponent(owner));
+////			e.addComponent(new SoundComponent(SiONSounds.BULLET, SiONSounds.BULLET));
+//			e.addComponent(new VelocityComponent());
+//			e.addComponent(new ExpiresComponent(1));
+//			e.addComponent(new DebugComponent(Constants.BULLET));
+			e.refresh();
+			
 			return e;
 		}
 	}

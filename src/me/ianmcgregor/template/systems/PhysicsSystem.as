@@ -1,6 +1,6 @@
 package me.ianmcgregor.template.systems {
-	import me.ianmcgregor.chicks.components.PhysicsComponent;
-	import me.ianmcgregor.chicks.constants.Constants;
+	import me.ianmcgregor.chick.components.PhysicsComponent;
+	import me.ianmcgregor.chick.constants.Constants;
 	import me.ianmcgregor.games.artemis.components.TransformComponent;
 	import me.ianmcgregor.games.base.GameContainer;
 
@@ -9,6 +9,7 @@ package me.ianmcgregor.template.systems {
 	import nape.callbacks.InteractionCallback;
 	import nape.callbacks.InteractionListener;
 	import nape.callbacks.InteractionType;
+	import nape.geom.Mat23;
 	import nape.geom.Vec2;
 	import nape.phys.Body;
 	import nape.space.Space;
@@ -80,7 +81,7 @@ package me.ianmcgregor.template.systems {
 			// Create a new simulation Space.
 			// Weak Vec2 will be automatically sent to object pool.
 			// when used as argument to Space constructor.
-			var gravity : Vec2 = Vec2.weak(0, 0);
+			var gravity : Vec2 = Vec2.weak(0, 600);
 			_space = new Space(gravity);
 
 			// collisions
@@ -105,7 +106,8 @@ package me.ianmcgregor.template.systems {
 		private function removeDebug() : void {
 			if(!_debugger) return;
 			_debugger.clear();
-			Starling.current.nativeStage.removeChild(_debugger.display);
+			if(Starling.current.nativeStage.contains(_debugger.display))
+				Starling.current.nativeStage.removeChild(_debugger.display);
 			_debugger = null;
 		}
 		
@@ -168,7 +170,7 @@ package me.ianmcgregor.template.systems {
 			body.position.setxy(transformComponent.x, transformComponent.y);
 			body.space = _space;
 			// ref entity in body userdata for collision reactions
-			body.userData["entity"] = e;
+			body.userData.entity = e;
 		}
 
 		/**
@@ -221,6 +223,27 @@ package me.ianmcgregor.template.systems {
 		 * @return 
 		 */
 		override protected function processEntity(e : Entity) : void {
+			var t: TransformComponent = e.getComponent(TransformComponent);
+			if( t ) {
+				var p : PhysicsComponent = _physicsMapper.get(e);
+				
+//				if(isNaN(p.body.position.x)) p.body.position.x = t.x;
+//				if(isNaN(p.body.position.y)) p.body.position.y = t.y;
+//				if(isNaN(p.body.rotation)) p.body.rotation = 0;
+				
+				t.x = p.body.position.x;
+				t.y = p.body.position.y;
+				t.rotation = p.body.rotation;
+				
+//				trace(t.x, t.y, t.rotation);
+				
+//				if(p.name == Constants.EGG) {
+//					var posY: Number = p.body.position.y;
+//					if(posY > _g.getHeight() + 64) {
+//						_world.deleteEntity(e);
+//					}	
+//				}
+			}
 		}
 
 		/**
@@ -234,10 +257,12 @@ package me.ianmcgregor.template.systems {
 			entities;
 
 			// step physics world
-			_space.step(_world.getDelta());
+			if(_world.getDelta() > 0)
+				_space.step(_world.getDelta());
 
 			// debug
 			if (_debug) {
+				_debugger.transform = Mat23.translation(-_g.camera.x,-_g.camera.y);
 				_debugger.clear();
 				_debugger.draw(_space);
 				_debugger.flush();

@@ -7,6 +7,19 @@ package me.ianmcgregor.games.utils.math {
 	 */
 	public final class MathUtils {
 		/**
+		 * sign 
+		 * 
+		 * @param x 
+		 * 
+		 * @return Number
+		 */
+		[Inline]
+		public static function sign(x : Number) : Number {
+			if(x > 0) return 1;
+			if(x < 0) return -1;
+			return 0;
+		}
+		/**
 		 * abs 
 		 * 
 		 * @param input 
@@ -137,7 +150,7 @@ package me.ianmcgregor.games.utils.math {
 		 */
 		[Inline]
 		public static function randomInt(min : int = 0, max : int = 100) : int {
-			return min + Math.random() * (max - min);
+			return min + Math.random() * (max + 1 - min);
 		}
 
 		/**
@@ -333,6 +346,34 @@ package me.ianmcgregor.games.utils.math {
 			var overlapX : Number = max(0, min(x12, x22) - max(x11, x21));
 			var overlapY : Number = max(0, min(y12, y22) - max(y11, y21));
 			return overlapX * overlapY;
+		}
+		
+		/**
+		 * rotateTo (degrees) - handles wrapping
+		 * 
+		 * @param start
+		 * @param end
+		 * 
+		 * @return Number
+		 */
+		[Inline]
+		public static function rotateToDEG(start: Number, end: Number): Number {
+			var diff:Number = (end - start) % 360;
+			if (diff != diff % 180) {
+				diff = (diff < 0) ? diff + 360 : diff - 360;
+			}
+			return start + diff;
+		}
+		
+		public static const PI2 : Number = Math.PI * 2;
+		
+		[Inline]
+		public static function rotateToRAD(start: Number, end: Number): Number {
+			var diff:Number = (end - start) % PI2;
+			if (diff != diff % Math.PI) {
+				diff = (diff < 0) ? diff + PI2 : diff - PI2;
+			}
+			return start + diff;
 		}
 	}
 }

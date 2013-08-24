@@ -37,11 +37,11 @@ package me.ianmcgregor.games.utils.collections {
 		 * @return 
 		 */
 		public static function getRandomElement(array:Object):* {
-			return getElementAtPercent(array, Math.random());
+			return array[ Math.floor(array.length * Math.random()) ];
 		}
 		
 		/**
-		 * getElementAtPercent - between 0 and 0.9 
+		 * getElementAtPercent - between 0 and 1 
 		 * 
 		 * @param array 
 		 * 
@@ -51,8 +51,7 @@ package me.ianmcgregor.games.utils.collections {
 			if(isNaN(percent)) percent = 0;
 			if(percent < 0) percent = 0;
 			if(percent >= 1) percent = 0.99999999;
-			var l : Number = array["length"];
-			return array[ Math.floor(l * percent) ];
+			return array[ Math.floor(array.length * percent) ];
 		}
 		
 		/**

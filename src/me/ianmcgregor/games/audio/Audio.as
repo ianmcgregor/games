@@ -46,9 +46,9 @@ package me.ianmcgregor.games.audio {
 		 * 
 		 * @return 
 		 */
-		public static function play(SoundClass: Class) : void {
+		public static function play(SoundClass: Class, volume: Number = 1) : void {
 //			trace("Audio.play(",SoundClass,")");
-			add(SoundClass).play();
+			add(SoundClass).play(0, volume);
 		}
 //		public static function add(id : String, data : Sound) : AudioObject {
 //			// sound already exists?

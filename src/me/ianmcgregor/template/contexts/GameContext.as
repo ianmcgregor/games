@@ -92,6 +92,7 @@ package me.ianmcgregor.template.contexts {
 		private function createEntities() : void {
 			EntityFactory.createGameConfig(_world);
 			EntityFactory.createDebug(_world);
+			EntityFactory.createBg(_world);
 			EntityFactory.createTitles(_world);
 		}
 
@@ -114,6 +115,7 @@ package me.ianmcgregor.template.contexts {
 					break;
 				case State.GAME_START:
 				case State.GAME_END:
+				case State.NEXT_LEVEL:
 					_gameConfigSystem.process();
 					break;
 				case State.PLAY:

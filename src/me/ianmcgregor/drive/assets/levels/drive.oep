@@ -1,0 +1,280 @@
+<?xml version="1.0"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OgmoVersion>2.1.0.6</OgmoVersion>
+  <Name>Drive</Name>
+  <BackgroundColor A="255" R="125" G="160" B="255" />
+  <GridColor A="255" R="255" G="240" B="90" />
+  <LevelDefaultSize>
+    <Width>1024</Width>
+    <Height>4096</Height>
+  </LevelDefaultSize>
+  <LevelMinimumSize>
+    <Width>640</Width>
+    <Height>480</Height>
+  </LevelMinimumSize>
+  <LevelMaximumSize>
+    <Width>64000</Width>
+    <Height>48000</Height>
+  </LevelMaximumSize>
+  <Filename>C:\Users\McFamily\Dropbox\workspace\Games\src\me\ianmcgregor\drive\assets\levels\drive.oep</Filename>
+  <AngleMode>Radians</AngleMode>
+  <CameraEnabled>true</CameraEnabled>
+  <CameraSize>
+    <Width>640</Width>
+    <Height>480</Height>
+  </CameraSize>
+  <ExportCameraPosition>true</ExportCameraPosition>
+  <LevelValueDefinitions />
+  <LayerDefinitions>
+    <LayerDefinition xsi:type="EntityLayerDefinition">
+      <Name>entities</Name>
+      <Grid>
+        <Width>32</Width>
+        <Height>32</Height>
+      </Grid>
+      <ScrollFactor>
+        <X>1</X>
+        <Y>1</Y>
+      </ScrollFactor>
+    </LayerDefinition>
+    <LayerDefinition xsi:type="EntityLayerDefinition">
+      <Name>entities2</Name>
+      <Grid>
+        <Width>64</Width>
+        <Height>64</Height>
+      </Grid>
+      <ScrollFactor>
+        <X>1</X>
+        <Y>1</Y>
+      </ScrollFactor>
+    </LayerDefinition>
+  </LayerDefinitions>
+  <Tilesets />
+  <EntityDefinitions>
+    <EntityDefinition Name="player1" Limit="1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>64</Width>
+        <Height>64</Height>
+      </Size>
+      <Origin>
+        <X>32</X>
+        <Y>32</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Image" ImagePath="..\tiles\car.png" Tiled="false">
+        <RectColor A="255" R="255" G="0" B="0" />
+      </ImageDefinition>
+      <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="player2" Limit="1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>64</Width>
+        <Height>64</Height>
+      </Size>
+      <Origin>
+        <X>32</X>
+        <Y>32</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Image" ImagePath="..\tiles\car2.png" Tiled="false">
+        <RectColor A="255" R="255" G="0" B="0" />
+      </ImageDefinition>
+      <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="road_straight" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>1024</Width>
+        <Height>256</Height>
+      </Size>
+      <Origin>
+        <X>0</X>
+        <Y>0</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Image" ImagePath="..\tiles\road_straight.png" Tiled="false">
+        <RectColor A="255" R="255" G="0" B="0" />
+      </ImageDefinition>
+      <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="road_split_start" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>1024</Width>
+        <Height>256</Height>
+      </Size>
+      <Origin>
+        <X>0</X>
+        <Y>0</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Image" ImagePath="..\tiles\road_split_start.png" Tiled="false">
+        <RectColor A="255" R="255" G="0" B="0" />
+      </ImageDefinition>
+      <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="roadblock" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>64</Width>
+        <Height>64</Height>
+      </Size>
+      <Origin>
+        <X>32</X>
+        <Y>32</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Image" ImagePath="..\tiles\roadblock.png" Tiled="false">
+        <RectColor A="255" R="255" G="0" B="0" />
+      </ImageDefinition>
+      <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="enemy" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="true" RotateIncrement="90">
+      <Size>
+        <Width>64</Width>
+        <Height>64</Height>
+      </Size>
+      <Origin>
+        <X>32</X>
+        <Y>32</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Image" ImagePath="..\tiles\car3.png" Tiled="false">
+        <RectColor A="255" R="255" G="0" B="0" />
+      </ImageDefinition>
+      <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="tree" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>64</Width>
+        <Height>64</Height>
+      </Size>
+      <Origin>
+        <X>32</X>
+        <Y>32</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Image" ImagePath="..\tiles\tree.png" Tiled="false">
+        <RectColor A="255" R="255" G="0" B="0" />
+      </ImageDefinition>
+      <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="road_split" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>1024</Width>
+        <Height>256</Height>
+      </Size>
+      <Origin>
+        <X>0</X>
+        <Y>0</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Image" ImagePath="..\tiles\road_split.png" Tiled="false">
+        <RectColor A="255" R="255" G="0" B="0" />
+      </ImageDefinition>
+      <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="road_split_end" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>1024</Width>
+        <Height>256</Height>
+      </Size>
+      <Origin>
+        <X>0</X>
+        <Y>0</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Image" ImagePath="..\tiles\road_split_end.png" Tiled="false">
+        <RectColor A="255" R="255" G="0" B="0" />
+      </ImageDefinition>
+      <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="road_curve_left" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>1024</Width>
+        <Height>256</Height>
+      </Size>
+      <Origin>
+        <X>0</X>
+        <Y>0</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Image" ImagePath="..\tiles\road_curve_left.png" Tiled="false">
+        <RectColor A="255" R="255" G="0" B="0" />
+      </ImageDefinition>
+      <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="road_curve_right" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>1024</Width>
+        <Height>256</Height>
+      </Size>
+      <Origin>
+        <X>0</X>
+        <Y>0</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Image" ImagePath="..\tiles\road_curve_right.png" Tiled="false">
+        <RectColor A="255" R="255" G="0" B="0" />
+      </ImageDefinition>
+      <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="grass" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>128</Width>
+        <Height>128</Height>
+      </Size>
+      <Origin>
+        <X>0</X>
+        <Y>0</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Image" ImagePath="..\tiles\grass.png" Tiled="false">
+        <RectColor A="255" R="255" G="0" B="0" />
+      </ImageDefinition>
+      <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="truck" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="true" RotateIncrement="90">
+      <Size>
+        <Width>128</Width>
+        <Height>256</Height>
+      </Size>
+      <Origin>
+        <X>64</X>
+        <Y>128</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Image" ImagePath="..\tiles\truck.png" Tiled="false">
+        <RectColor A="255" R="255" G="0" B="0" />
+      </ImageDefinition>
+      <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="boulder" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>64</Width>
+        <Height>64</Height>
+      </Size>
+      <Origin>
+        <X>32</X>
+        <Y>32</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Image" ImagePath="..\tiles\boulder.png" Tiled="false">
+        <RectColor A="255" R="128" G="128" B="128" />
+      </ImageDefinition>
+      <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="building" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>64</Width>
+        <Height>64</Height>
+      </Size>
+      <Origin>
+        <X>32</X>
+        <Y>32</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Rectangle" ImagePath="" Tiled="false">
+        <RectColor A="255" R="192" G="192" B="192" />
+      </ImageDefinition>
+      <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+  </EntityDefinitions>
+</project>

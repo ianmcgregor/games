@@ -26,6 +26,7 @@ package me.ianmcgregor.games.utils.ogmo {
 		private const GRID : String = "grid";
 		private const TILES : String = "tiles";
 		private const ENTITIES : String = "entities";
+		private const ENTITIES_2 : String = "entities2";
 		/**
 		 * _levels 
 		 */
@@ -115,7 +116,8 @@ package me.ianmcgregor.games.utils.ogmo {
 //					trace('walkable: ', j, i, level.grid[i][j]);
 				}
 			}
-			level.entities = parseEntities(xml);
+			level.entities = parseEntities(xml, ENTITIES);
+			level.entities2 = parseEntities(xml, ENTITIES_2);
 			System.disposeXML(xml);
 		}
 
@@ -186,9 +188,9 @@ package me.ianmcgregor.games.utils.ogmo {
 		 * 
 		 * @return Array 
 		 */
-		private function parseEntities(xml : XML) : OgmoEntityMap {
+		private function parseEntities(xml : XML, name: String) : OgmoEntityMap {
 			var map : OgmoEntityMap = new OgmoEntityMap();
-			var entityNode : XML = xml.child(ENTITIES)[0];
+			var entityNode : XML = xml.child(name)[0];
 			if (!entityNode) return null;
 			var entities : XMLList = entityNode.children();
 			for each (var node : XML in entities) {
@@ -264,6 +266,19 @@ package me.ianmcgregor.games.utils.ogmo {
 		 */
 		public function get levelList() : Vector.<OgmoLevel> {
 			return _levelList;
+		}
+		
+		/**
+		 * toString
+		 */
+		public function toString(): String {
+			var s: String = "";
+			var i: int = -1;
+			while(++i < numLevels) {
+				if(s != "") s += "\n";
+				s += i + ": " + at(i).name;
+			}
+			return s;
 		}
 	}
 }

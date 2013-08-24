@@ -1,4 +1,5 @@
 package me.ianmcgregor.games.ui {
+	import starling.text.TextFieldAutoSize;
 	import starling.display.Button;
 	import starling.text.BitmapFont;
 	import starling.text.TextField;
@@ -25,8 +26,11 @@ package me.ianmcgregor.games.ui {
 		 * 
 		 * @return 
 		 */
-		public function TextButton(text : String = "", scale : Number = 1, color : uint = 0xFFFF00) {
-			_text = new TextField(100, 20, text, BitmapFont.MINI, BitmapFont.NATIVE_SIZE, color, true);
+		public function TextButton(text : String = "", scale : Number = 1, color : uint = 0xFFFF00, font: String = null, autoSize: String = TextFieldAutoSize.BOTH_DIRECTIONS) {
+			if(!font) font = BitmapFont.MINI;
+			_text = new TextField(400, 50, text, font, BitmapFont.NATIVE_SIZE, color, true);
+			_text.autoSize = autoSize;
+			_text.batchable = text.length < 16;
 			_text.scaleX = _text.scaleY = scale;
 			_buttonTexture = new RenderTexture(_text.width, _text.height, true);
 			_buttonTexture.draw(_text);

@@ -13,6 +13,7 @@ package me.ianmcgregor.games.utils.ogmo {
 		public var tiles : Vector.<Vector.<uint>>;
 		public var nodes : Grid;
 		public var entities : OgmoEntityMap;
+		public var entities2 : OgmoEntityMap;
 
 		public function OgmoLevel(name : String) {
 			this.name = name;

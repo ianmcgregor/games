@@ -72,7 +72,7 @@ package me.ianmcgregor.games.audio {
 		 * 
 		 * @return 
 		 */
-		public function play(startTime : Number = 0) : SoundChannel {
+		public function play(startTime : Number = 0, volume: Number = 1) : SoundChannel {
 			if (!_sound) return null;
 			_startTime = startTime;
 			_isPlaying = true;
@@ -82,6 +82,7 @@ package me.ianmcgregor.games.audio {
 			 * loops 
 			 */
 			var loops : int = _loop ? 99999 : 0;
+			_soundTransform.volume = volume;
 			_channel = _sound.play(_startTime, loops, _soundTransform);
 
 			if(startTime > _sound.length) {

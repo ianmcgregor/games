@@ -6,11 +6,12 @@ package me.ianmcgregor.games.utils.display {
 	import starling.display.Stage;
 
 	import flash.geom.Matrix;
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	/**
 	 * @author thomas
 	 */
-	public class LayoutUtils{
+	public class LayoutUtils {
 		
 		/**
 		 * removeAllChildren 
@@ -37,8 +38,8 @@ package me.ianmcgregor.games.utils.display {
 		 * @return 
 		 */
 		public static function resize(target : Object, areaWidth : Number, areaHeight : Number, autoCenter : Boolean = true, fill : Boolean = true) : void {
-			var targetWidth : Number = target["width"];
-			var targetHeight : Number = target["height"];
+			var targetWidth : Number = target.width;
+			var targetHeight : Number = target.height;
 
 			var scale : Number;
 
@@ -56,12 +57,12 @@ package me.ianmcgregor.games.utils.display {
 				}
 			}
 
-			target["width"] = targetWidth * scale;
-			target["height"] = targetHeight * scale;
+			target.width = targetWidth * scale;
+			target.height = targetHeight * scale;
 
 			if (autoCenter) {
-				target["x"] = (areaWidth - target["width"]) * 0.5;
-				target["y"] = (areaHeight - target["height"]) * 0.5;
+				target.x = (areaWidth - target.width) * 0.5;
+				target.y = (areaHeight - target.height) * 0.5;
 			}
 		}
 		
@@ -321,14 +322,14 @@ package me.ianmcgregor.games.utils.display {
 		 * 
 		 * @return 
 		 */
-		public static function spaceChildrenEvenlyHorizontal(container: DisplayObjectContainer, areaWidth: Number): void {
-			
-			/**
-			 * objects 
-			 */
-			var objects: Array = getDisplayObjectArrayFromContainer(container);
-			spaceEvenlyHorizontal(objects, areaWidth);
-		}
+//		public static function spaceChildrenEvenlyHorizontal(container: DisplayObjectContainer, areaWidth: Number): void {
+//			
+//			/**
+//			 * objects 
+//			 */
+//			var objects: Array = getDisplayObjectArrayFromContainer(container);
+//			spaceEvenlyHorizontal(objects, areaWidth);
+//		}
 		
 		/**
 		 * spaceEvenlyVertical 
@@ -386,13 +387,13 @@ package me.ianmcgregor.games.utils.display {
 		 * 
 		 * @return 
 		 */
-		public static function spaceChildrenEvenlyVertical(container: DisplayObjectContainer, areaHeight: Number): void {
-			/**
-			 * objects 
-			 */
-			var objects: Array = getDisplayObjectArrayFromContainer(container);
-			spaceEvenlyVertical(objects, areaHeight);
-		}
+//		public static function spaceChildrenEvenlyVertical(container: DisplayObjectContainer, areaHeight: Number): void {
+//			/**
+//			 * objects 
+//			 */
+//			var objects: Array = getDisplayObjectArrayFromContainer(container);
+//			spaceEvenlyVertical(objects, areaHeight);
+//		}
 		
 		/**
 		 * spaceHorizontal 
@@ -435,13 +436,13 @@ package me.ianmcgregor.games.utils.display {
 		 * 
 		 * @return 
 		 */
-		public static function spaceChildrenHorizontal(container: DisplayObjectContainer, margin: Number, fromX: Number = 0): void {
-			/**
-			 * objects 
-			 */
-			var objects: Array = getDisplayObjectArrayFromContainer(container);
-			spaceHorizontal(objects, margin, fromX);
-		}
+//		public static function spaceChildrenHorizontal(container: DisplayObjectContainer, margin: Number, fromX: Number = 0): void {
+//			/**
+//			 * objects 
+//			 */
+//			var objects: Array = getDisplayObjectArrayFromContainer(container);
+//			spaceHorizontal(objects, margin, fromX);
+//		}
 		
 		
 		/**
@@ -486,13 +487,13 @@ package me.ianmcgregor.games.utils.display {
 		 * 
 		 * @return 
 		 */
-		public static function spaceChildrenVertical(container: DisplayObjectContainer, margin: Number, fromY: Number = 0): void {
-			/**
-			 * objects 
-			 */
-			var objects: Array = getDisplayObjectArrayFromContainer(container);
-			spaceVertical(objects, margin, fromY);
-		}
+//		public static function spaceChildrenVertical(container: DisplayObjectContainer, margin: Number, fromY: Number = 0): void {
+//			/**
+//			 * objects 
+//			 */
+//			var objects: Array = getDisplayObjectArrayFromContainer(container);
+//			spaceVertical(objects, margin, fromY);
+//		}
 		
 		/**
 		 * getDisplayObjectArrayFromContainer 
@@ -501,23 +502,23 @@ package me.ianmcgregor.games.utils.display {
 		 * 
 		 * @return 
 		 */
-		public static function getDisplayObjectArrayFromContainer(container: DisplayObjectContainer): Array {
-			/**
-			 * objects 
-			 */
-			var objects: Array = [];
-			/**
-			 * l 
-			 */
-			var l: int = container.numChildren;
-			/**
-			 * i 
-			 */
-			for(var i: int = 0; i < l; ++i){
-				objects[objects.length] = container.getChildAt(i);
-			}
-			return objects;
-		}
+//		public static function getDisplayObjectArrayFromContainer(container: DisplayObjectContainer): Array {
+//			/**
+//			 * objects 
+//			 */
+//			var objects: Array = [];
+//			/**
+//			 * l 
+//			 */
+//			var l: int = container.numChildren;
+//			/**
+//			 * i 
+//			 */
+//			for(var i: int = 0; i < l; ++i){
+//				objects[objects.length] = container.getChildAt(i);
+//			}
+//			return objects;
+//		}
 		
 //		public static function getDisplayObjectVectorFromContainer(container: DisplayObjectContainer): Vector.<DisplayObject> {
 //			var objects: Vector.<DisplayObject> = new Vector.<DisplayObject>();
@@ -527,5 +528,79 @@ package me.ianmcgregor.games.utils.display {
 //			}
 //			return objects;
 //		}
+
+		/**
+		 *  scrollRepeating - for repeating backgrounds or carousels
+		 */
+
+		public static function scrollRepeatingX(ob1: DisplayObject, ob2: DisplayObject, delta: Number) : void {
+			ob1.x += delta;
+			ob2.x += delta;
+			if(delta < 0) {
+				if (ob1.x < 0 - ob1.width) {
+					ob1.x = ob2.x + ob2.width;
+				} else if (ob2.x < 0 - ob2.width) {
+					ob2.x = ob1.x + ob1.width;
+				}
+			} else {
+				if (ob1.x > 0) {
+					ob2.x = ob1.x - ob2.width;
+				}
+				if (ob2.x > 0) {
+					ob1.x = ob2.x - ob1.width;
+				} 
+			}
+		}
+		
+		public static function scrollRepeatingY(ob1: DisplayObject, ob2: DisplayObject, delta: Number) : void {
+			ob1.y += delta;
+			ob2.y += delta;
+			if(delta < 0) {
+				if (ob1.y < 0 - ob1.height) {
+					ob1.y = ob2.y + ob2.height;
+				} else if (ob2.y < 0 - ob2.height) {
+					ob2.y = ob1.y + ob1.height;
+				}
+			} else {
+				if (ob1.y > 0) {
+					ob2.y = ob1.y - ob2.height;
+				}
+				if (ob2.y > 0) {
+					ob1.y = ob2.y - ob1.height;
+				} 
+			}
+		}
+		
+		/**
+		 * scrollCameraX - scroll camera to keep up with player
+		 */
+		public static function scrollCameraX(camera : Point, velocity : Number, position : Number, scrollAtMin : Number, scrollAtMax : Number, cameraMax : Number) : void {
+			// going left, right or nowhere
+			if (velocity < 0 && position < camera.x + scrollAtMin) {
+				camera.x += position - camera.x - scrollAtMin;
+			} else if(velocity > 0 && position > camera.x + scrollAtMax) {
+				camera.x += position - camera.x - scrollAtMax;
+			} else {
+				return;
+			}
+			// clamp camera to min max
+			camera.x = MathUtils.clamp(camera.x, 0, cameraMax);
+		}
+		
+		/**
+		 * scrollCameraY - scroll camera to keep up with player
+		 */
+		public static function scrollCameraY(camera : Point, velocity : Number, position : Number, scrollAtMin : Number, scrollAtMax : Number, cameraMax : Number) : void {
+			// going up, down or nowhere
+			if (velocity < 0 && position < camera.y + scrollAtMin) {
+				camera.y += position - camera.y - scrollAtMin;
+			} else if(velocity > 0 && position > camera.y + scrollAtMax) {
+				camera.y += position - camera.y - scrollAtMax;
+			} else {
+				return;
+			}
+			// clamp camera to min max
+			camera.y = MathUtils.clamp(camera.y, 0, cameraMax);
+		}
 	}
 }

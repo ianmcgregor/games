@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:424a352c8492fa7ee5b2dbd23e4aac18$ -->
+<TextureAtlas imagePath="sprites.png">
+    <SubTexture name="background1" x="2" y="644" width="1024" height="640"/>
+    <SubTexture name="background2" x="2" y="2" width="1024" height="640"/>
+    <SubTexture name="ball" x="534" y="1954" width="32" height="32"/>
+    <SubTexture name="btn_1_down" x="504" y="1900" width="52" height="52"/>
+    <SubTexture name="btn_1_up" x="480" y="1962" width="52" height="52"/>
+    <SubTexture name="btn_2_down" x="466" y="1846" width="52" height="52"/>
+    <SubTexture name="btn_2_up" x="450" y="1908" width="52" height="52"/>
+    <SubTexture name="city" x="2" y="1566" width="1024" height="278" frameX="0" frameY="-2" frameWidth="1024" frameHeight="280"/>
+    <SubTexture name="city2" x="2" y="1286" width="1024" height="278" frameX="0" frameY="-2" frameWidth="1024" frameHeight="280"/>
+    <SubTexture name="cloud" x="480" y="2016" width="32" height="24" frameX="0" frameY="-4" frameWidth="32" frameHeight="32"/>
+    <SubTexture name="dpad" x="2" y="1940" width="92" height="92"/>
+    <SubTexture name="dpad2" x="2" y="1846" width="92" height="92"/>
+    <SubTexture name="egg" x="536" y="1988" width="26" height="32" frameX="-3" frameY="0" frameWidth="32" frameHeight="32"/>
+    <SubTexture name="ground" x="554" y="1846" width="32" height="32"/>
+    <SubTexture name="heart" x="520" y="1880" width="20" height="16"/>
+    <SubTexture name="heart_empty" x="514" y="2016" width="20" height="16"/>
+    <SubTexture name="hero2_kick" x="390" y="1846" width="40" height="60" frameX="-16" frameY="-4" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="hero2_punch" x="374" y="1908" width="40" height="60" frameX="-12" frameY="-4" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="hero2_run" x="446" y="1970" width="32" height="60" frameX="-16" frameY="-4" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="hero2_stand" x="432" y="1846" width="32" height="60" frameX="-16" frameY="-8" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="hero3_kick" x="226" y="1978" width="40" height="64" frameX="-16" frameY="0" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="hero3_punch" x="146" y="1846" width="44" height="64" frameX="-12" frameY="0" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="hero3_run" x="340" y="1912" width="32" height="64" frameX="-16" frameY="0" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="hero3_stand" x="336" y="1978" width="32" height="64" frameX="-16" frameY="-4" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="hero_kick" x="192" y="1846" width="40" height="64" frameX="-12" frameY="-4" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="hero_punch" x="96" y="1846" width="48" height="64" frameX="-12" frameY="0" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="hero_run" x="272" y="1846" width="36" height="64" frameX="-12" frameY="0" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="hero_stand" x="268" y="1912" width="36" height="64" frameX="-12" frameY="-4" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="villain2_kick" x="370" y="1978" width="40" height="60" frameX="-16" frameY="-4" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="villain2_punch" x="344" y="1846" width="44" height="60" frameX="-12" frameY="-4" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="villain2_run" x="416" y="1908" width="32" height="60" frameX="-16" frameY="-4" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="villain2_stand" x="412" y="1970" width="32" height="60" frameX="-16" frameY="-8" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="villain3_kick" x="188" y="1912" width="40" height="64" frameX="-16" frameY="0" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="villain3_punch" x="142" y="1912" width="44" height="64" frameX="-12" frameY="0" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="villain3_run" x="310" y="1846" width="32" height="64" frameX="-16" frameY="0" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="villain3_stand" x="306" y="1912" width="32" height="64" frameX="-16" frameY="-4" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="villain4_kick" x="96" y="1978" width="44" height="64" frameX="-12" frameY="0" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="villain4_punch" x="96" y="1912" width="44" height="64" frameX="-12" frameY="0" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="villain4_run" x="234" y="1846" width="36" height="64" frameX="-12" frameY="0" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="villain4_stand" x="230" y="1912" width="36" height="64" frameX="-12" frameY="-4" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="villain_kick" x="184" y="1978" width="40" height="64" frameX="-16" frameY="0" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="villain_punch" x="142" y="1978" width="40" height="64" frameX="-12" frameY="0" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="villain_run" x="302" y="1978" width="32" height="64" frameX="-16" frameY="0" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="villain_stand" x="268" y="1978" width="32" height="64" frameX="-16" frameY="-4" frameWidth="64" frameHeight="68"/>
+    <SubTexture name="wire" x="520" y="1846" width="32" height="32"/>
+</TextureAtlas>

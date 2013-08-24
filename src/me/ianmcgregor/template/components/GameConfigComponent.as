@@ -1,4 +1,5 @@
 package me.ianmcgregor.template.components {
+	import me.ianmcgregor.games.utils.ogmo.OgmoLevel;
 	import com.artemis.Component;
 
 	/**
@@ -6,6 +7,7 @@ package me.ianmcgregor.template.components {
 	 */
 	public final class GameConfigComponent extends Component {
 		public var numPlayers : int;
+		public var level : OgmoLevel;
 		public function GameConfigComponent() {
 		}
 	}

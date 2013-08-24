@@ -1,0 +1,176 @@
+<level width="2048" height="4096">
+  <camera x="1216" y="3104" />
+  <entities>
+    <player1 id="0" x="1440" y="3520" />
+    <player2 id="1" x="1632" y="3520" />
+    <roadblock id="2" x="1280" y="4064" />
+    <roadblock id="3" x="1376" y="4064" />
+    <roadblock id="4" x="1472" y="4064" />
+    <roadblock id="5" x="1568" y="4064" />
+    <roadblock id="6" x="1664" y="4064" />
+    <roadblock id="7" x="1760" y="4064" />
+    <roadblock id="8" x="1344" y="2784" />
+    <roadblock id="9" x="1440" y="2784" />
+    <roadblock id="10" x="1632" y="3616" />
+    <enemy id="11" x="1408" y="3936" angle="0" />
+    <tree id="12" x="1120" y="3936" />
+    <tree id="13" x="1088" y="3648" />
+    <tree id="14" x="1888" y="3840" />
+    <tree id="15" x="1952" y="3424" />
+    <tree id="16" x="1856" y="3168" />
+    <tree id="17" x="1088" y="3328" />
+    <tree id="18" x="1216" y="3040" />
+    <tree id="19" x="1088" y="2688" />
+    <tree id="20" x="1088" y="2208" />
+    <tree id="21" x="1120" y="1856" />
+    <tree id="22" x="1184" y="1472" />
+    <tree id="23" x="1952" y="2112" />
+    <tree id="24" x="1888" y="2592" />
+    <tree id="25" x="1952" y="2912" />
+    <tree id="26" x="1856" y="2336" />
+    <tree id="27" x="1536" y="2752" />
+    <tree id="28" x="1536" y="2656" />
+    <tree id="29" x="1856" y="1888" />
+    <tree id="30" x="1696" y="544" />
+    <tree id="31" x="1792" y="1152" />
+    <tree id="32" x="1792" y="800" />
+    <tree id="33" x="1824" y="512" />
+    <tree id="34" x="992" y="608" />
+    <tree id="35" x="864" y="928" />
+    <tree id="36" x="992" y="1088" />
+    <tree id="37" x="1152" y="1344" />
+    <tree id="38" x="1056" y="192" />
+    <tree id="39" x="1056" y="352" />
+    <tree id="40" x="1728" y="96" />
+    <tree id="41" x="1728" y="256" />
+    <tree id="42" x="1088" y="32" />
+    <tree id="43" x="1536" y="2560" />
+    <tree id="44" x="1536" y="2464" />
+    <tree id="45" x="1536" y="2336" />
+    <tree id="46" x="1536" y="2112" />
+    <tree id="47" x="1536" y="2048" />
+    <tree id="48" x="1536" y="1856" />
+    <tree id="49" x="1856" y="1632" />
+    <tree id="50" x="1792" y="1344" />
+    <tree id="51" x="1856" y="1472" />
+    <tree id="52" x="1184" y="1600" />
+    <tree id="53" x="1056" y="1216" />
+    <tree id="54" x="1216" y="2016" />
+    <tree id="55" x="1088" y="768" />
+    <tree id="56" x="1760" y="960" />
+    <tree id="57" x="1216" y="2464" />
+    <tree id="58" x="1856" y="2816" />
+    <tree id="59" x="1248" y="3520" />
+    <tree id="60" x="1216" y="3840" />
+    <tree id="61" x="1856" y="3616" />
+    <enemy id="62" x="1664" y="3936" angle="0" />
+    <boulder id="63" x="1216" y="2208" />
+    <boulder id="64" x="1216" y="1824" />
+    <boulder id="65" x="1536" y="2208" />
+    <boulder id="66" x="1824" y="2496" />
+    <boulder id="67" x="1824" y="2976" />
+    <boulder id="68" x="1088" y="3168" />
+    <boulder id="69" x="1056" y="4064" />
+    <boulder id="70" x="1056" y="3968" />
+    <boulder id="71" x="1056" y="3872" />
+    <boulder id="72" x="1056" y="3776" />
+    <boulder id="73" x="1056" y="3584" />
+    <boulder id="74" x="1152" y="1184" />
+    <truck id="75" x="1408" y="160" angle="0" />
+    <building id="76" x="864" y="224" />
+    <building id="77" x="864" y="160" />
+    <building id="78" x="864" y="96" />
+    <building id="79" x="864" y="32" />
+    <building id="80" x="864" y="288" />
+    <building id="81" x="864" y="416" />
+    <building id="82" x="864" y="352" />
+    <boulder id="83" x="1184" y="32" />
+    <boulder id="84" x="1248" y="32" />
+    <boulder id="85" x="1312" y="32" />
+    <boulder id="86" x="1504" y="32" />
+    <boulder id="87" x="1568" y="32" />
+    <boulder id="88" x="1632" y="32" />
+    <boulder id="89" x="1088" y="128" />
+    <boulder id="90" x="1088" y="288" />
+    <boulder id="91" x="1696" y="160" />
+    <boulder id="92" x="1088" y="448" />
+    <boulder id="93" x="992" y="512" />
+    <boulder id="94" x="1728" y="416" />
+    <boulder id="95" x="1792" y="320" />
+    <boulder id="96" x="1728" y="640" />
+    <boulder id="97" x="1728" y="736" />
+    <boulder id="98" x="1056" y="864" />
+    <boulder id="99" x="1024" y="960" />
+    <boulder id="100" x="1088" y="1056" />
+    <boulder id="101" x="1024" y="704" />
+    <boulder id="102" x="1216" y="416" />
+    <boulder id="103" x="1568" y="480" />
+    <boulder id="104" x="1760" y="1056" />
+    <boulder id="105" x="1824" y="1248" />
+    <boulder id="106" x="1824" y="1760" />
+    <boulder id="107" x="1824" y="2144" />
+    <boulder id="108" x="1824" y="2240" />
+    <boulder id="109" x="1184" y="2304" />
+    <boulder id="110" x="1184" y="1920" />
+    <boulder id="111" x="1152" y="1696" />
+    <boulder id="112" x="1216" y="1696" />
+    <boulder id="113" x="1056" y="1504" />
+    <boulder id="114" x="1216" y="2144" />
+    <boulder id="115" x="1184" y="2400" />
+    <boulder id="116" x="1120" y="2592" />
+    <boulder id="117" x="1152" y="2784" />
+    <boulder id="118" x="1120" y="2496" />
+    <boulder id="119" x="1184" y="2880" />
+    <boulder id="120" x="1184" y="2976" />
+    <boulder id="121" x="1184" y="3136" />
+    <boulder id="122" x="1120" y="3264" />
+    <boulder id="123" x="1088" y="3424" />
+    <boulder id="124" x="1088" y="3488" />
+    <boulder id="125" x="1120" y="4064" />
+    <boulder id="126" x="1184" y="4064" />
+    <boulder id="127" x="1856" y="4064" />
+    <boulder id="128" x="1856" y="4064" />
+    <boulder id="129" x="1952" y="4064" />
+    <boulder id="130" x="1920" y="3936" />
+    <enemy id="131" x="1824" y="3040" angle="-1.570796" />
+    <enemy id="132" x="1792" y="2432" angle="-1.570796" />
+    <enemy id="133" x="1376" y="2272" angle="3.141593" />
+    <enemy id="134" x="1376" y="1568" angle="3.141593" />
+    <enemy id="135" x="1664" y="1568" angle="3.141593" />
+    <enemy id="136" x="1536" y="1760" angle="-1.570796" />
+    <enemy id="137" x="1120" y="960" angle="1.570796" />
+    <enemy id="138" x="1568" y="576" angle="3.141593" />
+  </entities>
+  <entities2>
+    <road_straight id="0" x="1024" y="3840" />
+    <road_straight id="1" x="1024" y="3584" />
+    <road_straight id="2" x="1024" y="3328" />
+    <road_straight id="4" x="1024" y="3072" />
+    <road_straight id="5" x="1024" y="2816" />
+    <road_split_start id="6" x="1024" y="2560" />
+    <road_straight id="3" x="1024" y="1536" />
+    <road_straight id="12" x="896" y="768" />
+    <road_straight id="13" x="896" y="512" />
+    <road_straight id="14" x="896" y="256" />
+    <road_straight id="15" x="896" y="0" />
+    <road_split id="7" x="1024" y="2304" />
+    <road_split id="8" x="1024" y="2048" />
+    <road_split_end id="9" x="1024" y="1792" />
+    <road_curve_left id="16" x="1024" y="1280" />
+    <road_curve_left id="10" x="960" y="1024" />
+    <grass id="11" x="896" y="1280" />
+    <grass id="17" x="896" y="1408" />
+    <grass id="18" x="896" y="1536" />
+    <grass id="19" x="896" y="1664" />
+    <grass id="20" x="768" y="1024" />
+    <grass id="21" x="768" y="1152" />
+    <grass id="22" x="768" y="1280" />
+    <grass id="23" x="768" y="1408" />
+    <grass id="24" x="768" y="1536" />
+    <grass id="25" x="768" y="1664" />
+    <grass id="26" x="1920" y="1152" />
+    <grass id="27" x="1920" y="1024" />
+    <grass id="28" x="1920" y="896" />
+    <grass id="29" x="1792" y="896" />
+  </entities2>
+</level>

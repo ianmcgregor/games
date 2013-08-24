@@ -1,5 +1,7 @@
 package me.ianmcgregor.template.spatials.gfx {
 	import me.ianmcgregor.games.ui.TextButton;
+	import me.ianmcgregor.games.utils.math.MathUtils;
+	import me.ianmcgregor.template.constants.Constants;
 	import me.ianmcgregor.template.constants.KeyConstants;
 
 	import starling.display.Quad;
@@ -7,6 +9,8 @@ package me.ianmcgregor.template.spatials.gfx {
 	import starling.events.Event;
 	import starling.text.BitmapFont;
 	import starling.text.TextField;
+	import starling.text.TextFieldAutoSize;
+	import starling.utils.HAlign;
 
 	/**
 	 * @author ianmcgregor
@@ -18,8 +22,8 @@ package me.ianmcgregor.template.spatials.gfx {
 		private const TITLE_TEXT : String = "TEMPLATE GAME"; 
 		private const ONE_PLAYER : String = "ONE PLAYER";
 		private const TWO_PLAYER : String = "TWO PLAYER";
-		private const INFO_TEXT_1 : String = "PLAYER ONE:\nWASD + SPACE"; 
-		private const INFO_TEXT_2 : String = "PLAYER TWO:\nARROWS + CTRL"; 
+		private const INFO_TEXT_1 : String = "WASD + F + G"; 
+		private const INFO_TEXT_2 : String = "ARROWS + K + L"; 
 		
 		/**
 		 * TitlesGfx 
@@ -43,7 +47,7 @@ package me.ianmcgregor.template.spatials.gfx {
 			 * title 
 			 */
 			var title : TextField;
-			addChild(title = new TextField(100, 20, TITLE_TEXT, BitmapFont.MINI, BitmapFont.NATIVE_SIZE, 0xFFFF00, true));
+			addChild(title = new TextField(100, 20, TITLE_TEXT, Constants.FONT, BitmapFont.NATIVE_SIZE, 0xFFFF00, true));
 			title.scaleX = title.scaleY = 8;
 			
 			title.x = (w - title.width) * 0.5;
@@ -55,35 +59,38 @@ package me.ianmcgregor.template.spatials.gfx {
 			var buttonY : Number = title.y + title.height + 140;
 			var buttonScale : int = 5;
 			
-			var button : TextButton;
-			addChild(button = new TextButton(ONE_PLAYER, buttonScale));
-			button.addEventListener(Event.TRIGGERED, onOnePlayer);
+			var button1 : TextButton;
+			addChild(button1 = new TextButton(ONE_PLAYER, buttonScale));
+			button1.addEventListener(Event.TRIGGERED, onOnePlayer);
 			
-			button.x = w * 0.5 - button.width - 10;
-			button.y = buttonY;
+			button1.x = w * 0.5 - button1.width - 50;
+			button1.y = buttonY;
 
-			addChild(button = new TextButton(TWO_PLAYER, buttonScale));
-			button.addEventListener(Event.TRIGGERED, onTwoPlayer);
+			var button2 : TextButton;
+			addChild(button2 = new TextButton(TWO_PLAYER, buttonScale));
+			button2.addEventListener(Event.TRIGGERED, onTwoPlayer);
 			
-			button.x = w * 0.5 + 10;
-			button.y = buttonY;
+			button2.x = w * 0.5 + 50;
+			button2.y = buttonY;
 			
 			
 			/**
 			 * info 
 			 */
 			var info1 : TextField;
-			addChild(info1 = new TextField(200, 70, INFO_TEXT_1, BitmapFont.MINI, BitmapFont.NATIVE_SIZE, 0xFFFF00, true));
+			addChild(info1 = new TextField(200, 70, INFO_TEXT_1, Constants.FONT, BitmapFont.NATIVE_SIZE, 0xFFFF00, true));
+			info1.autoSize = TextFieldAutoSize.BOTH_DIRECTIONS;
 			info1.scaleX = info1.scaleY = 2;
 			
-			info1.x = w * 0.5 - info1.width - 60;
-			info1.y = button.y + button.height + 20;
+			info1.x = MathUtils.round(button1.x + (button1.width - info1.width) * 0.5);
+			info1.y =  MathUtils.round(button1.y + button1.height + 20);
 			
 			var info2 : TextField;
-			addChild(info2 = new TextField(200, 70, INFO_TEXT_2, BitmapFont.MINI, BitmapFont.NATIVE_SIZE, 0xFFFF00, true));
+			addChild(info2 = new TextField(200, 70, INFO_TEXT_2, Constants.FONT, BitmapFont.NATIVE_SIZE, 0xFFFF00, true));
+			info2.autoSize = TextFieldAutoSize.BOTH_DIRECTIONS;
 			info2.scaleX = info2.scaleY = 2;
 			
-			info2.x = w * 0.5 + 60;
+			info2.x = MathUtils.round(button2.x + (button2.width - info2.width) * 0.5);
 			info2.y = info1.y;
 			
 //			flatten();

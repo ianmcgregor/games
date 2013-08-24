@@ -71,11 +71,11 @@ package me.ianmcgregor.template.spatials {
 			/**
 			 * buttons 
 			 */
-			g.addChild(_playerOneButton = new KeyButton(KeyConstants.SHOOT_P1, g.assets.getTexture("btn_1_up"), g.assets.getTexture("btn_1_down")));
+			g.addChild(_playerOneButton = new KeyButton(KeyConstants.A_P1, g.assets.getTexture("btn_1_up"), g.assets.getTexture("btn_1_down")));
 			_playerOneButton.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 			_playerOneButton.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
 			
-			g.addChild(_playerTwoButton = new KeyButton(KeyConstants.SHOOT_P1, g.assets.getTexture("btn_2_up"), g.assets.getTexture("btn_2_down")));
+			g.addChild(_playerTwoButton = new KeyButton(KeyConstants.A_P2, g.assets.getTexture("btn_2_up"), g.assets.getTexture("btn_2_down")));
 			_playerTwoButton.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 			_playerTwoButton.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
 			

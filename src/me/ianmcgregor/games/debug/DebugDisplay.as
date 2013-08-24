@@ -34,6 +34,7 @@ package me.ianmcgregor.games.debug {
 		 * _updateList 
 		 */
 		private var _updateList : Vector.<IUpdateable> = new Vector.<IUpdateable>();
+		private var _layerList : LayerList;
 		/**
 		 * DebugDisplay 
 		 */
@@ -82,6 +83,7 @@ package me.ianmcgregor.games.debug {
 			addChild( _fps = new FPS() );
 			addChild( _objectPoolMonitor = new ObjectPoolMonitor() );
 			addChild( _logDisplay = new LogDisplay() );
+			addChild( _layerList = new LayerList(this.parent) );
 			
 			_objectPoolMonitor.addEventListener(Event.RESIZE, updateLayout);
 			_logDisplay.addEventListener(Event.RESIZE, updateLayout);

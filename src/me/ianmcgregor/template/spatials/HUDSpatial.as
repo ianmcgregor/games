@@ -1,12 +1,13 @@
 package me.ianmcgregor.template.spatials {
-	import me.ianmcgregor.template.constants.Constants;
-	import starling.textures.TextureAtlas;
-	import me.ianmcgregor.template.constants.EntityTag;
 	import me.ianmcgregor.games.artemis.components.TransformComponent;
 	import me.ianmcgregor.games.artemis.spatials.Spatial;
 	import me.ianmcgregor.games.base.GameContainer;
 	import me.ianmcgregor.template.components.HUDComponent;
+	import me.ianmcgregor.template.constants.Constants;
+	import me.ianmcgregor.template.constants.EntityTag;
 	import me.ianmcgregor.template.spatials.gfx.HUDGfx;
+
+	import starling.textures.TextureAtlas;
 
 	import com.artemis.ComponentMapper;
 	import com.artemis.Entity;
@@ -61,13 +62,15 @@ package me.ianmcgregor.template.spatials {
 			var hudMapper : ComponentMapper = new ComponentMapper(HUDComponent, _world);
 			_hudComponent = hudMapper.get(_owner);
 			/**
-			 * isTwoPlayer
+			 * players
 			 */
-			var isTwoPlayer: Boolean = _world.getTagManager().getEntity(EntityTag.PLAYER_2) != null;
+//			var p1 : Entity = _world.getTagManager().getEntity(EntityTag.PLAYER_1);
+			var p2 : Entity = _world.getTagManager().getEntity(EntityTag.PLAYER_2);
+			var isTwoPlayer: Boolean = p2 != null;
 			/**
 			 * _gfx
 			 */
-			var textureAtlas: TextureAtlas = g.assets.getTextureAtlas(Constants.NULL);
+			var textureAtlas: TextureAtlas = g.assets.getTextureAtlas(Constants.SPRITES);
 			_gfx = new HUDGfx(g.getWidth(), g.getHeight(), textureAtlas, isTwoPlayer);
 			g.addChild(_gfx);
 		}
@@ -83,6 +86,9 @@ package me.ianmcgregor.template.spatials {
 			g;
 			_gfx.x = _transform.x;
 			_gfx.y = _transform.y;
+			
+			_gfx.update(1, _hudComponent.player[1].health, _hudComponent.player[1].score);
+			_gfx.update(2, _hudComponent.player[2].health, _hudComponent.player[2].score);
 		}
 		
 		/**

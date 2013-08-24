@@ -2,7 +2,7 @@ package me.ianmcgregor.template.spatials {
 	import me.ianmcgregor.games.artemis.components.TransformComponent;
 	import me.ianmcgregor.games.artemis.spatials.Spatial;
 	import me.ianmcgregor.games.base.GameContainer;
-	import me.ianmcgregor.template.spatials.gfx.NullGfx;
+	import me.ianmcgregor.template.spatials.gfx.template.ImageGfx;
 
 	import com.artemis.ComponentMapper;
 	import com.artemis.Entity;
@@ -19,7 +19,7 @@ package me.ianmcgregor.template.spatials {
 		/**
 		 * _gfx 
 		 */
-		private var _gfx : NullGfx;
+		private var _gfx : ImageGfx;
 		
 		/**
 		 * NullSpatial 
@@ -47,9 +47,7 @@ package me.ianmcgregor.template.spatials {
 			var transformMapper : ComponentMapper = new ComponentMapper(TransformComponent, _world);
 			_transform = transformMapper.get(_owner);
 			
-			g.addChild(_gfx = new NullGfx());
-			_gfx.flatten();
-			_gfx.touchable = false;
+			g.addChild(_gfx = new ImageGfx());
 		}
 		
 		/**
@@ -60,12 +58,9 @@ package me.ianmcgregor.template.spatials {
 		 * @return 
 		 */
 		override public function render(g : GameContainer) : void {
-			g;
-			_gfx.x = _transform.x + _gfx.pivotX;
-			_gfx.y = _transform.y + _gfx.pivotY;
-			_gfx.rotation = _transform.rotation;
-			
-//			Logger.log("NullSpatial.render()", 2, 3);
+			_gfx.x = _transform.x - g.camera.x;
+			_gfx.y = _transform.y - g.camera.y;
+			_gfx.rotation = _transform.rotation + Math.PI * 0.5;
 		}
 
 		/**
@@ -80,26 +75,5 @@ package me.ianmcgregor.template.spatials {
 				g.removeChild(_gfx);
 			}
 		}
-		
-		
-		//		protected var _rectQuad : Quad;
-//		protected function showCollisionRect(g : Canvas, transformX: Number, transformY: Number): void {
-//			var rectMapper : ComponentMapper = new ComponentMapper(CollisionRect, _world);
-//			var r: CollisionRect = rectMapper.get(_owner);
-//			if(r) {
-//				if (!g.contains(_rectQuad)) {
-//						_rectQuad = new Quad(r.rect.width, r.rect.height);
-//						_rectQuad.color = 0x00FFFF;
-//						_rectQuad.alpha = 0.6;
-//						g.addChild(_rectQuad);
-//				}
-//				_rectQuad.x = transformX + r.rect.x;
-//				_rectQuad.y = transformY + r.rect.y;
-//				
-////				if (!g.contains(_gfx) && g.contains(_rect)) {
-////					g.removeChild(_rect);
-////				}
-//			}
-//		}
 	}
 }

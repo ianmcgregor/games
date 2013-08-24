@@ -9,6 +9,7 @@ package me.ianmcgregor.games.utils.ogmo {
 		public var y : Number;
 		public var width : Number;
 		public var height : Number;
+		public var angle : Number;
 
 		public function OgmoEntity(type : String) {
 			this.type = type;

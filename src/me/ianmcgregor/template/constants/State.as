@@ -8,5 +8,8 @@ package me.ianmcgregor.template.constants {
 		public static const PLAY : String = "PLAY";
 		public static const GAME_END : String = "GAME_END";
 		public static const GAME_OVER : String = "GAME_OVER";
+		public static const NEXT_LEVEL : String = "NEXT_LEVEL";
+		public static const GAME_ENDING : String = "GAME_ENDING";
+		public static const LEVEL_COMPLETE : String = "LEVEL_COMPLETE";
 	}
 }

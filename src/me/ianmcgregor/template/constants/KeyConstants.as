@@ -13,13 +13,15 @@ package me.ianmcgregor.template.constants {
 		static public const DOWN_P1 : uint = Keyboard.S;
 		static public const LEFT_P1 : uint = Keyboard.A;
 		static public const RIGHT_P1 : uint = Keyboard.D;
-		static public const SHOOT_P1 : uint = Keyboard.SPACE;
+		static public const A_P1 : uint = Keyboard.F;
+		static public const B_P1 : uint = Keyboard.G;
 		// player 2
 		static public const UP_P2 : uint = Keyboard.UP;
 		static public const DOWN_P2 : uint = Keyboard.DOWN;
 		static public const LEFT_P2 : uint = Keyboard.LEFT;
 		static public const RIGHT_P2 : uint = Keyboard.RIGHT;
-		static public const SHOOT_P2 : uint = Keyboard.CONTROL;
+		static public const A_P2 : uint = Keyboard.K;
+		static public const B_P2 : uint = Keyboard.L;
 		
 	}
 }
