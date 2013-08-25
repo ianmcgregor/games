@@ -155,5 +155,9 @@ package me.ianmcgregor.games.audio {
 				_channel.soundTransform = _soundTransform;
 			}
 		}
+
+		public function set loop(b : Boolean) : void {
+			_loop = b;
+		}
 	}
 }

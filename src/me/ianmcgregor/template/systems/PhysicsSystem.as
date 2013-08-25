@@ -1,6 +1,6 @@
 package me.ianmcgregor.template.systems {
-	import me.ianmcgregor.chick.components.PhysicsComponent;
-	import me.ianmcgregor.chick.constants.Constants;
+	import me.ianmcgregor.template.components.PhysicsComponent;
+	import me.ianmcgregor.template.constants.Constants;
 	import me.ianmcgregor.games.artemis.components.TransformComponent;
 	import me.ianmcgregor.games.base.GameContainer;
 
@@ -227,10 +227,6 @@ package me.ianmcgregor.template.systems {
 			if( t ) {
 				var p : PhysicsComponent = _physicsMapper.get(e);
 				
-//				if(isNaN(p.body.position.x)) p.body.position.x = t.x;
-//				if(isNaN(p.body.position.y)) p.body.position.y = t.y;
-//				if(isNaN(p.body.rotation)) p.body.rotation = 0;
-				
 				t.x = p.body.position.x;
 				t.y = p.body.position.y;
 				t.rotation = p.body.rotation;
@@ -254,7 +250,7 @@ package me.ianmcgregor.template.systems {
 		 * @return 
 		 */
 		override protected function processEntities(entities : IImmutableBag) : void {
-			entities;
+			super.processEntities(entities);
 
 			// step physics world
 			if(_world.getDelta() > 0)

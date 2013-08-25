@@ -1,7 +1,7 @@
 package {
 	import me.ianmcgregor.games.base.BaseStartup;
-	import me.ianmcgregor.template.Game;
-	import me.ianmcgregor.template.assets.Assets;
+	import me.ianmcgregor.tenseconds.TenSeconds;
+	import me.ianmcgregor.tenseconds.assets.Assets;
 
 	import flash.utils.getTimer;
 
@@ -13,11 +13,11 @@ package {
 	// species
 //	[SWF(width="640", height="480", frameRate="60", backgroundColor="#000000")]
 	// racer
-	[SWF(width="960", height="640", frameRate="60", backgroundColor="#383228")]
+	[SWF(width="1024", height="640", frameRate="60", backgroundColor="#000000")]
 	public class Main extends BaseStartup {
 		public function Main() {
 //			super(Racer, 960, 640, me.ianmcgregor.racer.assets.Assets);
-			super(Game, 960, 640, me.ianmcgregor.template.assets.Assets);
+//			super(Game, 960, 640, me.ianmcgregor.template.assets.Assets);
 //			super(Nanotech, 1024, 768, me.ianmcgregor.nanotech.assets.Assets);
 //			super(Species, 640, 480);
 //			super(Pong, 960, 640);
@@ -25,6 +25,7 @@ package {
 //			super(Chicks, 1024, 640, me.ianmcgregor.chicks.assets.Assets);
 //			super(Fight, 1024, 640, me.ianmcgregor.fight.assets.Assets);
 //			super(Drive, 640, 480, me.ianmcgregor.drive.assets.Assets);
+			super(TenSeconds, 960, 640, me.ianmcgregor.tenseconds.assets.Assets);
 
 //			testA();
 //			testB();

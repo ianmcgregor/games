@@ -14,7 +14,7 @@ package me.ianmcgregor.games.audio {
 		 * 
 		 * @return 
 		 */
-		public static function add(SoundClass: Class) : AudioObject {
+		public static function add(SoundClass: Class, loop: Boolean = false) : AudioObject {
 			// sound already exists?
 			/**
 			 * sound 
@@ -22,9 +22,10 @@ package me.ianmcgregor.games.audio {
 			var sound : AudioObject = get(SoundClass);
 			if (!sound) {
 //				trace('SoundClass: ' + (SoundClass));
-				sound = new AudioObject(new SoundClass());
+				sound = new AudioObject(new SoundClass(), loop);
 				_soundObjects[SoundClass] = sound;
 			}
+			sound.loop = loop;
 			return sound;
 		}
 		
@@ -46,21 +47,14 @@ package me.ianmcgregor.games.audio {
 		 * 
 		 * @return 
 		 */
-		public static function play(SoundClass: Class, volume: Number = 1) : void {
+		public static function play(SoundClass: Class, volume: Number = 1, loop: Boolean = false) : void {
 //			trace("Audio.play(",SoundClass,")");
-			add(SoundClass).play(0, volume);
+			add(SoundClass, loop).play(0, volume);
 		}
-//		public static function add(id : String, data : Sound) : AudioObject {
-//			// sound already exists?
-//			var sound : AudioObject = get(id);
-//			if (!sound) {
-//				_soundObjects[id] = new AudioObject(id, data);
-//			}
-//			return sound;
-//		}
-//		
-//		public static function get(id: String) : AudioObject {
-//			return _soundObjects[id];
-//		}
+		public static function stop(SoundClass: Class) : void {
+//			trace("Audio.play(",SoundClass,")");
+			var sound : AudioObject = get(SoundClass);
+			if (sound) sound.stop();
+		}
 	}
 }
