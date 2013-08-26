@@ -4,14 +4,13 @@ package me.ianmcgregor.tenseconds.spatials {
 	import me.ianmcgregor.games.base.GameContainer;
 
 	import starling.display.Image;
-	import starling.textures.Texture;
 
 	import com.artemis.ComponentMapper;
 	import com.artemis.Entity;
 	import com.artemis.World;
 
 	/**
-	 * @author ianmcgregor
+	 * @author McFamily
 	 */
 	public final class BgSpatial extends Spatial {
 		/**
@@ -49,8 +48,9 @@ package me.ianmcgregor.tenseconds.spatials {
 			var transformMapper : ComponentMapper = new ComponentMapper(TransformComponent, _world);
 			_transform = transformMapper.get(_owner);
 			
-//			g.addChild(_gfx = new Image(g.assets.getTexture("background1")));
-			g.addChild(_gfx = new Image(Texture.fromColor(g.getWidth(), g.getHeight(), 0x777777)));
+			g.addChild(_gfx = new Image(g.assets.getTexture("bg")));
+//			_gfx.x = _transform.x;
+//			_gfx.y = _transform.y;
 			_gfx.touchable = false;
 		}
 		
@@ -63,8 +63,8 @@ package me.ianmcgregor.tenseconds.spatials {
 		 */
 		override public function render(g : GameContainer) : void {
 			g;
-//			_gfx.x = _transform.x + _gfx.pivotX;
-//			_gfx.y = _transform.y + _gfx.pivotY;
+//			_gfx.x = _transform.x;
+//			_gfx.y = _transform.y;
 //			_gfx.rotation = _transform.rotation;
 			
 //			Logger.log("NullSpatial.render()", 2, 3);
@@ -82,7 +82,5 @@ package me.ianmcgregor.tenseconds.spatials {
 				g.removeChild(_gfx);
 			}
 		}
-		
-	
 	}
 }

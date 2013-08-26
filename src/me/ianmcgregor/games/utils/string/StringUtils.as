@@ -454,6 +454,7 @@ package me.ianmcgregor.games.utils.string {
 		*	@playerversion Flash 9.0
 		*	@tiptext
 		*/
+		[Inline]
 		public static function padLeft(p_string:String, p_padChar:String, p_length:uint):String {
 			/**
 			 * s 

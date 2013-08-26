@@ -1,11 +1,12 @@
 package me.ianmcgregor.tenseconds.systems {
-	import me.ianmcgregor.games.audio.Audio;
 	import me.ianmcgregor.games.base.GameContainer;
 	import me.ianmcgregor.games.utils.ogmo.OgmoEntity;
 	import me.ianmcgregor.games.utils.ogmo.OgmoLevel;
 	import me.ianmcgregor.games.utils.ogmo.OgmoParser;
 	import me.ianmcgregor.tenseconds.assets.Levels;
+	import me.ianmcgregor.tenseconds.components.BeamComponent;
 	import me.ianmcgregor.tenseconds.components.GameConfigComponent;
+	import me.ianmcgregor.tenseconds.components.HUDComponent;
 	import me.ianmcgregor.tenseconds.constants.Constants;
 	import me.ianmcgregor.tenseconds.constants.EntityGroup;
 	import me.ianmcgregor.tenseconds.constants.EntityTag;
@@ -113,11 +114,10 @@ package me.ianmcgregor.tenseconds.systems {
 					if (_gameConfigComponent.numPlayers > 1) {
 						EntityFactory.createPlayer(_world, 2);
 					}
-					Audio.play(music, 0.5, true);
 					// level
 					createLevel();
 					// add hud
-//					EntityFactory.createHUD(_world);
+					EntityFactory.createHUD(_world);
 					
 					// controls
 //					if(Environment.isMobile) {
@@ -148,6 +148,7 @@ package me.ianmcgregor.tenseconds.systems {
 					}
 					break;
 				case State.GAME_ENDING:
+					stopBeams();
 					if(_interval == GAME_OVER_PAUSE) {
 						_interval = 0;
 						_g.state = State.GAME_END;
@@ -156,15 +157,28 @@ package me.ianmcgregor.tenseconds.systems {
 					}
 					break;
 				case State.GAME_END:
-					// delete entities
-					clearLevel();
-					deleteEntityByTag(EntityTag.HUD);
 					// game over
 					_interval = 0;
-					EntityFactory.createGameOver(_world);
+					var _hud: HUDComponent = _world.getTagManager().getEntity(EntityTag.HUD).getComponent(HUDComponent);
+					EntityFactory.createGameOver(_world, (_hud.hits + _hud.kills >= Constants.MAX_ENEMIES));
 					_g.state = State.GAME_OVER;
 					break;
+				case State.PLAY_AGAIN:
+					// delete entities
+					clearLevel();
+					_g.state = State.TITLES;
+					break;
 				default:
+			}
+		}
+
+		private function stopBeams() : void {
+			var towers: IImmutableBag = _world.getGroupManager().getEntities(EntityGroup.TOWERS);
+			var l: int = towers.size();
+			for (var i : int = 0; i < l; ++i) {
+				var t: Entity = towers.get(i);
+				var b : BeamComponent = t.getComponent(BeamComponent);
+				b.setOn(false);
 			}
 		}
 		
@@ -177,9 +191,6 @@ package me.ianmcgregor.tenseconds.systems {
 			_g.camera.x = _level.camera.x;
 			_g.camera.y = _level.camera.y;
 			
-			EntityFactory.createGround(_world, _level.width, _level.height);
-			
-//			EntityFactory.createLevel(_world, _level);
 			var entities : Vector.<OgmoEntity> = _level.entities.getAll();
 			var l : uint = entities.length;
 			for (var i : uint = 0; i < l; ++i) {
@@ -189,12 +200,10 @@ package me.ianmcgregor.tenseconds.systems {
 					case Constants.TOWER:
 						EntityFactory.createTower(_world, int(o.id), o.x, o.y);
 						break;
-					case Constants.ENEMY:
-						EntityFactory.createEnemySpawner(_world, o.x, o.y);
-						break;
 					default:
 				}
 			}
+			EntityFactory.createEnemySpawner(_world);
 		}
 		
 		/**
@@ -202,9 +211,12 @@ package me.ianmcgregor.tenseconds.systems {
 		 */
 		private function clearLevel(): void {
 			Starling.current.nativeStage.removeChildren();
+			deleteEntityGroup(EntityGroup.TOWERS);
+			deleteEntityGroup(EntityGroup.ENEMIES);
 			deleteEntityGroup(EntityGroup.LEVEL_ENTITIES);
 			deleteEntityByTag(EntityTag.PLAYER_1);
 			deleteEntityByTag(EntityTag.PLAYER_2);
+			deleteEntityByTag(EntityTag.HUD);
 		}
 
 		/**

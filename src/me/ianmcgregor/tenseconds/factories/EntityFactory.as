@@ -2,7 +2,6 @@ package me.ianmcgregor.tenseconds.factories {
 	import me.ianmcgregor.games.artemis.components.HealthComponent;
 	import me.ianmcgregor.games.artemis.components.SpatialFormComponent;
 	import me.ianmcgregor.games.artemis.components.TransformComponent;
-	import me.ianmcgregor.games.artemis.components.WeaponComponent;
 	import me.ianmcgregor.tenseconds.components.BeamComponent;
 	import me.ianmcgregor.tenseconds.components.DebugComponent;
 	import me.ianmcgregor.tenseconds.components.EnemyComponent;
@@ -15,19 +14,17 @@ package me.ianmcgregor.tenseconds.factories {
 	import me.ianmcgregor.tenseconds.components.TowerComponent;
 	import me.ianmcgregor.tenseconds.constants.EntityGroup;
 	import me.ianmcgregor.tenseconds.constants.EntityTag;
-	import me.ianmcgregor.tenseconds.spatials.BgSpatial;
 	import me.ianmcgregor.tenseconds.spatials.ControlsSpatial;
 	import me.ianmcgregor.tenseconds.spatials.DebugSpatial;
 	import me.ianmcgregor.tenseconds.spatials.EnemySpatial;
 	import me.ianmcgregor.tenseconds.spatials.GameOverSpatial;
+	import me.ianmcgregor.tenseconds.spatials.BgSpatial;
 	import me.ianmcgregor.tenseconds.spatials.HUDSpatial;
 	import me.ianmcgregor.tenseconds.spatials.TitlesSpatial;
 	import me.ianmcgregor.tenseconds.spatials.TowerSpatial;
 
 	import com.artemis.Entity;
 	import com.artemis.World;
-
-	import flash.media.Sound;
 
 	/**
 	 * EntityFactory 
@@ -77,24 +74,6 @@ package me.ianmcgregor.tenseconds.factories {
 		}
 		
 		/**
-		 * createBg 
-		 * 
-		 * @param _world 
-		 * 
-		 * @return 
-		 */
-		public static function createBg(_world : World) : Entity {
-			var e : Entity;
-			
-			e = _world.createEntity();
-			e.addComponent(new SpatialFormComponent(BgSpatial));
-			e.addComponent(new TransformComponent(0, 0));
-			e.refresh();
-
-			return e;
-		}
-		
-		/**
 		 * createTitles 
 		 * 
 		 * @param _world 
@@ -120,13 +99,13 @@ package me.ianmcgregor.tenseconds.factories {
 		 * 
 		 * @return 
 		 */
-		public static function createGameOver(_world : World) : Entity {
+		public static function createGameOver(_world : World, won: Boolean) : Entity {
 			var e : Entity;
 			
 			e = _world.createEntity();
 			e.addComponent(new SpatialFormComponent(GameOverSpatial));
 			e.addComponent(new TransformComponent(0, 0));
-			e.addComponent(new GameOverComponent());
+			e.addComponent(new GameOverComponent(won));
 			e.refresh();
 
 			return e;
@@ -147,7 +126,7 @@ package me.ianmcgregor.tenseconds.factories {
 			e.setTag(EntityTag.HUD);
 			e.addComponent(new HUDComponent());
 			e.addComponent(new SpatialFormComponent(HUDSpatial));
-			e.addComponent(new TransformComponent(0, 0));
+			e.addComponent(new TransformComponent(15, 10));
 			e.refresh();
 			
 			return e;
@@ -204,12 +183,11 @@ package me.ianmcgregor.tenseconds.factories {
 		 * 
 		 * @return 
 		 */
-		public static function createEnemySpawner(_world : World, x: Number, y: Number) : Entity {
+		public static function createEnemySpawner(_world : World) : Entity {
 			var e : Entity;
 			
 			e = _world.createEntity();
 			e.addComponent(new EnemySpawnComponent());
-			e.addComponent(new TransformComponent(x, y));
 			e.refresh();
 
 			return e;
@@ -229,9 +207,9 @@ package me.ianmcgregor.tenseconds.factories {
 			e = _world.createEntity();
 			e.setGroup( EntityGroup.ENEMIES );
 			e.addComponent(new EnemyComponent());
-			e.addComponent(new SpatialFormComponent(EnemySpatial));
-			e.addComponent(new TransformComponent(x, y));
-			e.addComponent(new WeaponComponent());
+			e.addComponent(new SpatialFormComponent(EnemySpatial, true));
+			var speedMultiplier : Number = 0.8 + 0.4 * Math.random();
+			e.addComponent(new TransformComponent(x, y, speedMultiplier));
 			e.addComponent(new HealthComponent(1));
 			e.refresh();
 
@@ -255,13 +233,12 @@ package me.ianmcgregor.tenseconds.factories {
 			return e;
 		}
 		
-		public static function createGround(_world : World, width : uint, height : uint) : Entity {
+		public static function createBg(_world : World) : Entity {
 			var e : Entity;
 			
 			e = _world.createEntity();
-			e.addComponent(new TransformComponent(0, height - 10, width, 10));
-			e.addComponent(new SpatialFormComponent(GroundSpatial));
-//			e.addComponent(new PhysicsComponent(Constants.NULL, BodyFactory.createGround(width, 10)));
+			e.addComponent(new TransformComponent(0, 0));
+			e.addComponent(new SpatialFormComponent(BgSpatial));
 			e.refresh();
 			
 			return e;

@@ -33,6 +33,7 @@ package me.ianmcgregor.games.utils.collections {
 		 * @return 
 		 */
 		public static function get(clazz : Class) : * {
+			
 			/**
 			 * pool 
 			 */
@@ -41,6 +42,32 @@ package me.ianmcgregor.games.utils.collections {
 				return pool.pop();
 			} else {
 				return new clazz();
+			}
+		}
+		
+		public static function getWithArgs(clazz : Class, ...arg) : * {
+			
+			/**
+			 * pool 
+			 */
+			var pool : Array = getPool(clazz);
+			if ( pool.length > 0 ) {
+				return pool.pop();
+			} else {
+				switch (arg.length) {
+					case 1:
+						return new clazz(arg[0]);
+					case 2:
+						return new clazz(arg[0], arg[1]);
+					case 3:
+						return new clazz(arg[0], arg[1], arg[2]);
+					case 4:
+						return new clazz(arg[0], arg[1], arg[2], arg[3]);
+					case 0:
+						return new clazz();
+					default:
+						throw new Error('Too many arguments');
+				}
 			}
 		}
 		

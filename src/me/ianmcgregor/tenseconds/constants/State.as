@@ -11,5 +11,7 @@ package me.ianmcgregor.tenseconds.constants {
 		public static const NEXT_LEVEL : String = "NEXT_LEVEL";
 		public static const GAME_ENDING : String = "GAME_ENDING";
 		public static const LEVEL_COMPLETE : String = "LEVEL_COMPLETE";
+		public static const PLAY_AGAIN : String = "PLAY_AGAIN";
+		public static const GAME_WON : String = "GAME_WON";
 	}
 }

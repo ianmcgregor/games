@@ -41,9 +41,7 @@ package me.ianmcgregor.tenseconds.systems {
 		
 		//
 		private var _maxRotation: Number = Math.PI * 0.3;
-		private var _rotationIncrement : Number = 0.005;
-		private var _rotationVelocity : Number = 0.01;
-		private var _lastRotation : int;
+		private var _rotationIncrement : Number = 0.01;
 
 		/**
 		 * HeroControlSystem 
@@ -96,15 +94,7 @@ package me.ianmcgregor.tenseconds.systems {
 			var right : Boolean = player1 ? _input.isDown(KeyConstants.RIGHT_P1) : _input.isDown(KeyConstants.RIGHT_P2);
 			var up : Boolean = player1 ? _input.isDown(KeyConstants.UP_P1) : _input.isDown(KeyConstants.UP_P2);
 			var down : Boolean = player1 ? _input.justPressed(KeyConstants.DOWN_P1) : _input.justPressed(KeyConstants.DOWN_P2);
-//			var a : Boolean = player1 ? _input.isDown(KeyConstants.A_P1) : _input.isDown(KeyConstants.A_P2);
-//			var b : Boolean = player1 ? _input.isDown(KeyConstants.B_P1) : _input.isDown(KeyConstants.B_P2);
 			
-//			var health : HealthComponent = e.getComponent(HealthComponent);
-//			if(health.isAlive()) {
-//				
-//			} else {
-//				_g.state = State.GAME_ENDING;				
-//			}
 			var towers: IImmutableBag = _world.getGroupManager().getEntities(EntityGroup.TOWERS);
 			if(down) {
 				TowerComponent(towers.get(player.selectedTower).getComponent(TowerComponent)).playerSelected = 0;
@@ -117,26 +107,28 @@ package me.ianmcgregor.tenseconds.systems {
 			var transform: TransformComponent = _transformMapper.get(t);
 			
 			if (left) {
-				if(_lastRotation == 1) _rotationVelocity = _rotationIncrement * 2;
-				_lastRotation = -1;
-				transform.rotation -= _rotationVelocity;
-				_rotationVelocity += _rotationIncrement;
+				if(player.lastRotation == 1) player.rotationVelocity = _rotationIncrement * 2;
+				player.lastRotation = -1;
+				transform.rotation -= player.rotationVelocity;
+				player.rotationVelocity += _rotationIncrement;
 				if(transform.rotation < -_maxRotation) transform.rotation = -_maxRotation;
 			} else if (right) {
-				if(_lastRotation == -1) _rotationVelocity = _rotationIncrement * 2;
-				_lastRotation = 1;
-				transform.rotation += _rotationVelocity;
-				_rotationVelocity += _rotationIncrement;
+				if(player.lastRotation == -1) player.rotationVelocity = _rotationIncrement * 2;
+				player.lastRotation = 1;
+				transform.rotation += player.rotationVelocity;
+				player.rotationVelocity += _rotationIncrement;
 				if(transform.rotation > _maxRotation) transform.rotation = _maxRotation;
 			} else {
-				_rotationVelocity = _rotationIncrement * 2;
+				player.rotationVelocity = _rotationIncrement * 2;
 			}
 			
 			var tower: TowerComponent = t.getComponent(TowerComponent);
 			tower.playerSelected = player.playerNum;
 			var beam : BeamComponent = t.getComponent(BeamComponent);
-			beam.setOn(up);
-			beam.rotation = transform.rotation;
+			if(beam.alive) {
+				beam.setOn(up);
+				beam.rotation = transform.rotation;
+			}
 		}
 
 		private function selectNewTower(player : PlayerComponent, towers : IImmutableBag) : void {

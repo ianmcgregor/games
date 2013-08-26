@@ -2,12 +2,11 @@ package me.ianmcgregor.tenseconds.spatials {
 	import me.ianmcgregor.games.artemis.components.TransformComponent;
 	import me.ianmcgregor.games.artemis.spatials.Spatial;
 	import me.ianmcgregor.games.base.GameContainer;
+	import me.ianmcgregor.games.utils.string.StringUtils;
 	import me.ianmcgregor.tenseconds.components.HUDComponent;
 	import me.ianmcgregor.tenseconds.constants.Constants;
-	import me.ianmcgregor.tenseconds.constants.EntityTag;
-	import me.ianmcgregor.tenseconds.spatials.gfx.HUDGfx;
 
-	import starling.textures.TextureAtlas;
+	import starling.text.TextField;
 
 	import com.artemis.ComponentMapper;
 	import com.artemis.Entity;
@@ -28,7 +27,10 @@ package me.ianmcgregor.tenseconds.spatials {
 		/**
 		 * _gfx 
 		 */
-		private var _gfx : HUDGfx;
+		private var _killsText : TextField;
+		private var _kills : int;
+		private var _hits : int;
+		private var _hitsText : TextField;
 		
 		
 		/**
@@ -62,17 +64,23 @@ package me.ianmcgregor.tenseconds.spatials {
 			var hudMapper : ComponentMapper = new ComponentMapper(HUDComponent, _world);
 			_hudComponent = hudMapper.get(_owner);
 			/**
-			 * players
-			 */
-//			var p1 : Entity = _world.getTagManager().getEntity(EntityTag.PLAYER_1);
-			var p2 : Entity = _world.getTagManager().getEntity(EntityTag.PLAYER_2);
-			var isTwoPlayer: Boolean = p2 != null;
-			/**
 			 * _gfx
 			 */
-			var textureAtlas: TextureAtlas = g.assets.getTextureAtlas(Constants.SPRITES);
-			_gfx = new HUDGfx(g.getWidth(), g.getHeight(), textureAtlas, isTwoPlayer);
-			g.addChild(_gfx);
+			_killsText = new TextField(60, 10, "", Constants.FONT, -1, 0xFFFFFF);
+			_killsText.hAlign = 'left';
+			_killsText.scaleX = _killsText.scaleY = 2;
+			_killsText.x = _transform.x;
+			_killsText.y = _transform.y;
+			setKillsText();
+			g.addChild(_killsText);
+			
+			_hitsText = new TextField(60, 10, "", Constants.FONT, -1, 0xFFFFFF);
+			_hitsText.hAlign = 'left';
+			_hitsText.scaleX = _hitsText.scaleY = 2;
+			_hitsText.x = g.getWidth() - _hitsText.width;// - _transform.x;
+			_hitsText.y = _transform.y;
+			setHitsText();
+			g.addChild(_hitsText);
 		}
 
 		/**
@@ -84,11 +92,27 @@ package me.ianmcgregor.tenseconds.spatials {
 		 */
 		override public function render(g : GameContainer) : void {
 			g;
-			_gfx.x = _transform.x;
-			_gfx.y = _transform.y;
 			
-			_gfx.update(1, _hudComponent.player[1].health, _hudComponent.player[1].score);
-			_gfx.update(2, _hudComponent.player[2].health, _hudComponent.player[2].score);
+			var kills: int = _hudComponent.kills;
+			var hits: int = _hudComponent.hits;
+			
+			if(_kills != kills) {
+				_kills = kills;
+				setKillsText();
+			}
+			
+			if(_hits != hits) {
+				_hits = hits;
+				setHitsText();				
+			}
+		}
+		
+		private function setKillsText() : void {
+			_killsText.text = "KILLS: " + StringUtils.padLeft(String(_kills), "0", 4);
+		}
+		
+		private function setHitsText() : void {
+			_hitsText.text = "HITS: " + StringUtils.padLeft(String(_hits), "0", 4);
 		}
 		
 		/**
@@ -99,8 +123,11 @@ package me.ianmcgregor.tenseconds.spatials {
 		 * @return 
 		 */
 		override public function remove(g : GameContainer) : void {
-			if(g.contains(_gfx)) {
-				g.removeChild(_gfx);
+			if(g.contains(_killsText)) {
+				g.removeChild(_killsText);
+			}
+			if(g.contains(_hitsText)) {
+				g.removeChild(_hitsText);
 			}
 		}
 	}

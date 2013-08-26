@@ -4,7 +4,7 @@ package me.ianmcgregor.tenseconds.components {
 	/**
 	 * @author McFamily
 	 */
-	public class EnemyComponent extends Component {
+	public final class EnemyComponent extends Component {
 		public function EnemyComponent() {
 		}
 	}

@@ -64,5 +64,18 @@ package me.ianmcgregor.games.artemis.spatials {
 		 */
 		public function remove(g : GameContainer) : void {
 		}
+
+		/**
+		 * reuse 
+		 * 
+		 * @param world 
+		 * @param e 
+		 * 
+		 * @return 
+		 */
+		public function reuse(world : World, e : Entity) : void {
+			_world = world;
+			_owner = e;
+		}
 	}
 }

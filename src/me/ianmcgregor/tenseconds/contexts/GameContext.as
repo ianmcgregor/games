@@ -1,18 +1,16 @@
 package me.ianmcgregor.tenseconds.contexts {
 	import me.ianmcgregor.games.artemis.systems.RenderSystem;
+	import me.ianmcgregor.games.audio.Audio;
 	import me.ianmcgregor.games.base.GameContainer;
 	import me.ianmcgregor.games.base.IContext;
 	import me.ianmcgregor.tenseconds.constants.State;
 	import me.ianmcgregor.tenseconds.factories.EntityFactory;
 	import me.ianmcgregor.tenseconds.systems.BeamSystem;
-	import me.ianmcgregor.tenseconds.systems.DebugSystem;
 	import me.ianmcgregor.tenseconds.systems.EnemySpawnSystem;
 	import me.ianmcgregor.tenseconds.systems.EnemySystem;
 	import me.ianmcgregor.tenseconds.systems.GameConfigSystem;
 	import me.ianmcgregor.tenseconds.systems.GameOverSystem;
-	import me.ianmcgregor.tenseconds.systems.HUDSystem;
 	import me.ianmcgregor.tenseconds.systems.PlayerControlSystem;
-	import me.ianmcgregor.tenseconds.systems.SoundSystem;
 	import me.ianmcgregor.tenseconds.systems.TitlesSystem;
 
 	import com.artemis.EntitySystem;
@@ -35,11 +33,9 @@ package me.ianmcgregor.tenseconds.contexts {
 		 * Systems 
 		 */
 		private var _renderSystem : EntitySystem;
-		private var _soundSystem : EntitySystem;
 		private var _titlesSystem : EntitySystem;
 		private var _gameOverSystem : EntitySystem;
-		private var _hudSystem : EntitySystem;
-		private var _debugSystem : EntitySystem;
+//		private var _debugSystem : EntitySystem;
 		private var _gameConfigSystem : EntitySystem;
 		private var _playerControlSystem : EntitySystem;
 		private var _beamSystem : EntitySystem;
@@ -73,15 +69,13 @@ package me.ianmcgregor.tenseconds.contexts {
 			// set systems
 			_gameConfigSystem = systemManager.setSystem(new GameConfigSystem(_gameContainer));
 			_renderSystem = systemManager.setSystem(new RenderSystem(_gameContainer));
-			_soundSystem = systemManager.setSystem(new SoundSystem(_gameContainer));
 			_titlesSystem = systemManager.setSystem(new TitlesSystem(_gameContainer));
 			_gameOverSystem = systemManager.setSystem(new GameOverSystem(_gameContainer));
-			_hudSystem = systemManager.setSystem(new HUDSystem(_gameContainer));
 			_beamSystem = systemManager.setSystem(new BeamSystem(_gameContainer));
-			_debugSystem = systemManager.setSystem(new DebugSystem(_gameContainer));
+//			_debugSystem = systemManager.setSystem(new DebugSystem(_gameContainer));
 			_playerControlSystem = systemManager.setSystem(new PlayerControlSystem(_gameContainer));
-			_enemySpawnSystem = systemManager.setSystem(new EnemySpawnSystem());
-			_enemySystem = systemManager.setSystem(new EnemySystem());
+			_enemySpawnSystem = systemManager.setSystem(new EnemySpawnSystem(_gameContainer));
+			_enemySystem = systemManager.setSystem(new EnemySystem(_gameContainer));
 			// init systems
 			systemManager.initializeAll();
 
@@ -96,9 +90,11 @@ package me.ianmcgregor.tenseconds.contexts {
 		 */
 		private function createEntities() : void {
 			EntityFactory.createGameConfig(_world);
-			EntityFactory.createDebug(_world);
+//			EntityFactory.createDebug(_world);
 			EntityFactory.createBg(_world);
 			EntityFactory.createTitles(_world);
+			
+			Audio.play(music, 0.5, true);
 		}
 
 		/**
@@ -115,29 +111,29 @@ package me.ianmcgregor.tenseconds.contexts {
 			// process systems
 			
 			switch(_gameContainer.state){
-				case State.TITLES:
-					_titlesSystem.process();
-					break;
-				case State.GAME_START:
-				case State.GAME_END:
-				case State.NEXT_LEVEL:
-					_gameConfigSystem.process();
-					break;
 				case State.PLAY:
-					_hudSystem.process();
 					_playerControlSystem.process();
 					_beamSystem.process();
 					_enemySpawnSystem.process();
 					_enemySystem.process();
+					break;
+				case State.TITLES:
+					_titlesSystem.process();
+					break;
+				case State.GAME_START:
+				case State.GAME_ENDING:
+				case State.GAME_END:
+				case State.NEXT_LEVEL:
+				case State.PLAY_AGAIN:
+					_gameConfigSystem.process();
 					break;
 				case State.GAME_OVER:
 					_gameOverSystem.process();
 					break;
 				default:
 			}
-			_soundSystem.process();
 			_renderSystem.process();
-			_debugSystem.process();
+//			_debugSystem.process();
 		}
 
 		/**

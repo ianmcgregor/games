@@ -23,7 +23,7 @@ package me.ianmcgregor.tenseconds.spatials {
 		/**
 		 * _gameOverComponent 
 		 */
-		private var _gameOverComponent : GameOverComponent;
+		private var _gameOver : GameOverComponent;
 		/**
 		 * _input 
 		 */
@@ -67,11 +67,11 @@ package me.ianmcgregor.tenseconds.spatials {
 			 * titlesMapper 
 			 */
 			var gameOverMapper : ComponentMapper = new ComponentMapper(GameOverComponent, _world);
-			_gameOverComponent = gameOverMapper.get(_owner);
+			_gameOver = gameOverMapper.get(_owner);
 			/**
 			 * _gfx
 			 */
-			if(!_gfx)_gfx = new GameOverGfx(g.getWidth(), g.getHeight());
+			if(!_gfx)_gfx = new GameOverGfx(g, _gameOver.won);
 			g.addChild(_gfx);
 			_gfx.addEventListener(Event.TRIGGERED, onTrigger);
 		}

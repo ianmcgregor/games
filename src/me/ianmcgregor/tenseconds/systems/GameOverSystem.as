@@ -94,7 +94,7 @@ package me.ianmcgregor.tenseconds.systems {
 			if (_g.getInput().justPressed(KeyConstants.PLAY_AGAIN)) {
 				_g.getInput().setKeyUp(KeyConstants.PLAY_AGAIN);
 				_world.deleteEntity(e);
-				_g.state = State.TITLES;
+				_g.state = State.PLAY_AGAIN;
 				EntityFactory.createTitles(_world);
 			}
 		}

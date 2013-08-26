@@ -1,4 +1,5 @@
 package me.ianmcgregor.tenseconds.systems {
+	import me.ianmcgregor.tenseconds.constants.State;
 	import me.ianmcgregor.games.artemis.components.HealthComponent;
 	import me.ianmcgregor.games.artemis.components.TransformComponent;
 	import me.ianmcgregor.games.base.GameContainer;
@@ -28,11 +29,10 @@ package me.ianmcgregor.tenseconds.systems {
 		 * mappers 
 		 */
 		private var _beamMapper : ComponentMapper;
-		/**
-		 * _transformMapper 
-		 */
 		private var _transformMapper : ComponentMapper;
 		private var _healthMapper : ComponentMapper;
+		private var _enemies : IImmutableBag;
+		private var _foundAnyAlive : Boolean;
 
 		/**
 		 * PlaySystem 
@@ -56,6 +56,11 @@ package me.ianmcgregor.tenseconds.systems {
 			_transformMapper = new ComponentMapper(TransformComponent, _world);
 			_healthMapper = new ComponentMapper(HealthComponent, _world);
 		}
+		
+		override protected function begin() : void {
+			_enemies = _world.getGroupManager().getEntities(EntityGroup.ENEMIES);
+			_foundAnyAlive = false;
+		}
 
 		/**
 		 * processEntity 
@@ -68,14 +73,21 @@ package me.ianmcgregor.tenseconds.systems {
 			var b: BeamComponent = _beamMapper.get(e);
 			var h: HealthComponent = _healthMapper.get(e);
 			
-			if(!h.isAlive()) {
+			if (!h.isAlive()) {
 				b.setOn(false);
-			}else if(b.getOn()) {
+				b.alive = false;
+//				_world.deleteEntity(e);
+				return;	
+			}
+			
+			_foundAnyAlive = true;
+				
+			if(b.getOn()) {
 				h.addDamage(_world.getDelta());
 				
 				var t: TransformComponent = _transformMapper.get(e);
 				// get beam vector from rotation
-				var beam: Vec2 = Vec2.fromPolar(1000, t.rotation - Math.PI * 0.5);
+				var beam: Vec2 = Vec2.fromPolar(Constants.BEAM_LENGTH, t.rotation - Math.PI * 0.5);
 				// get left normal
 				var leftNormal: Vec2 = beam.copy().rotate(Math.PI * -0.5);
 				
@@ -83,7 +95,7 @@ package me.ianmcgregor.tenseconds.systems {
 				var collision : Boolean;
 				
 				var g : Graphics;
-				//g = Starling.current.nativeOverlay.graphics;
+//				g = Starling.current.nativeOverlay.graphics;
 				if(g) {
 					// draw
 					g.clear();
@@ -124,11 +136,12 @@ package me.ianmcgregor.tenseconds.systems {
 				}
 				
 				// enemy collisions
-				var enemies: IImmutableBag = _world.getGroupManager().getEntities(EntityGroup.ENEMIES);
-				var l: int = enemies.size();
+				var l: int = _enemies.size();
 				for (var i : int = 0; i < l; ++i) {
-					var ee: Entity = enemies.get(i);
+					var ee: Entity = _enemies.get(i);
 					var et: TransformComponent = ee.getComponent(TransformComponent);
+					if(et.y < 0) continue;
+					if(MathUtils.distance(t.x, t.y, et.x, et.y) > Constants.BEAM_LENGTH + Constants.ENEMY_RADIUS) continue; 
 					// perpendicular distance from beam to circle
 					project = MathUtils.dotProduct((et.x - t.x), (et.y - t.y), leftNormal.x, leftNormal.y);
 					collision = MathUtils.abs(project) < Constants.ENEMY_RADIUS;
@@ -140,6 +153,12 @@ package me.ianmcgregor.tenseconds.systems {
 				// dispose
 				beam.dispose();
 				leftNormal.dispose();
+			}
+		}
+		
+		override protected function end() : void {
+			if(!_foundAnyAlive) {
+				_g.state = State.GAME_ENDING;
 			}
 		}
 	}

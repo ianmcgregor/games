@@ -25,7 +25,7 @@ package {
 //			super(Chicks, 1024, 640, me.ianmcgregor.chicks.assets.Assets);
 //			super(Fight, 1024, 640, me.ianmcgregor.fight.assets.Assets);
 //			super(Drive, 640, 480, me.ianmcgregor.drive.assets.Assets);
-			super(TenSeconds, 960, 640, me.ianmcgregor.tenseconds.assets.Assets);
+			super(TenSeconds, 1024, 640, me.ianmcgregor.tenseconds.assets.Assets);
 
 //			testA();
 //			testB();

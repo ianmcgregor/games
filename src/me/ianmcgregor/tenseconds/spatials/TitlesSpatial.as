@@ -71,7 +71,7 @@ package me.ianmcgregor.tenseconds.spatials {
 			/**
 			 * _gfx
 			 */
-			if(!_gfx)_gfx = new TitlesGfx(g.getWidth(), g.getHeight());
+			if(!_gfx)_gfx = new TitlesGfx(g);
 			g.addChild(_gfx);
 			_gfx.addEventListener(Event.TRIGGERED, onTrigger);
 		}

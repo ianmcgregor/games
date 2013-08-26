@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:b828bd5b9e508a6bc329b53b714ae465$ -->
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:78beaa42acc5f305d65d797cfcae77f4$ -->
 <TextureAtlas imagePath="sprites.png">
-    <SubTexture name="btn_1_down" x="2" y="2" width="52" height="52"/>
-    <SubTexture name="btn_1_up" x="56" y="2" width="52" height="52"/>
-    <SubTexture name="btn_2_down" x="110" y="2" width="52" height="52"/>
-    <SubTexture name="btn_2_up" x="164" y="2" width="52" height="52"/>
-    <SubTexture name="dpad" x="2" y="56" width="92" height="92"/>
-    <SubTexture name="dpad2" x="96" y="56" width="92" height="92"/>
-    <SubTexture name="heart" x="190" y="56" width="20" height="16"/>
-    <SubTexture name="heart_empty" x="212" y="56" width="20" height="16"/>
+    <SubTexture name="bg" x="2" y="2" width="1024" height="640"/>
+    <SubTexture name="btn_1_down" x="1028" y="2" width="52" height="52"/>
+    <SubTexture name="btn_1_up" x="1082" y="2" width="52" height="52"/>
+    <SubTexture name="btn_2_down" x="1136" y="2" width="52" height="52"/>
+    <SubTexture name="btn_2_up" x="1190" y="2" width="52" height="52"/>
+    <SubTexture name="dpad" x="1244" y="2" width="92" height="92"/>
+    <SubTexture name="dpad2" x="1338" y="2" width="92" height="92"/>
+    <SubTexture name="gameover" x="2" y="644" width="709" height="441"/>
+    <SubTexture name="heart" x="713" y="644" width="20" height="16"/>
+    <SubTexture name="heart_empty" x="735" y="644" width="20" height="16"/>
+    <SubTexture name="oneplayer" x="757" y="644" width="359" height="200"/>
+    <SubTexture name="playagain" x="1118" y="644" width="331" height="47"/>
+    <SubTexture name="title" x="2" y="1087" width="876" height="205"/>
+    <SubTexture name="tower" x="880" y="1087" width="95" height="98"/>
+    <SubTexture name="tower_p1" x="977" y="1087" width="95" height="98"/>
+    <SubTexture name="tower_p2" x="1074" y="1087" width="95" height="98"/>
+    <SubTexture name="twoplayer" x="1171" y="1087" width="357" height="200"/>
+    <SubTexture name="youwon" x="2" y="1294" width="519" height="451"/>
 </TextureAtlas>

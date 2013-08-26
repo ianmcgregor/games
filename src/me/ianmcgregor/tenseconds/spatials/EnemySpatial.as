@@ -1,15 +1,13 @@
 package me.ianmcgregor.tenseconds.spatials {
+	import me.ianmcgregor.games.utils.collections.ObjectPool;
 	import me.ianmcgregor.games.artemis.components.TransformComponent;
 	import me.ianmcgregor.games.artemis.spatials.Spatial;
 	import me.ianmcgregor.games.audio.Audio;
 	import me.ianmcgregor.games.base.GameContainer;
-	import me.ianmcgregor.games.utils.display.Shapes;
-	import me.ianmcgregor.tenseconds.constants.Constants;
-	import me.ianmcgregor.tenseconds.spatials.gfx.template.ImageGfx;
+	import me.ianmcgregor.tenseconds.spatials.gfx.template.ParticleGfx;
 
-	import starling.textures.Texture;
+	import starling.events.Event;
 
-	import com.artemis.ComponentMapper;
 	import com.artemis.Entity;
 	import com.artemis.World;
 
@@ -24,7 +22,8 @@ package me.ianmcgregor.tenseconds.spatials {
 		/**
 		 * _gfx 
 		 */
-		private var _gfx : ImageGfx;
+		private var _gfx : ParticleGfx;
+		private var _explodeGfx : ParticleGfx;
 		
 		/**
 		 * NullSpatial 
@@ -46,18 +45,12 @@ package me.ianmcgregor.tenseconds.spatials {
 		 * @return 
 		 */
 		override public function initalize(g : GameContainer) : void {
-			/**
-			 * transformMapper 
-			 */
-			var transformMapper : ComponentMapper = new ComponentMapper(TransformComponent, _world);
-			_transform = transformMapper.get(_owner);
-			
-			if(!g.assets.getTexture(Constants.TEXTURE_ENEMY)) {
-				var t: Texture = Texture.fromBitmapData(Shapes.circle(Constants.ENEMY_RADIUS, 0xFF0000));
-				g.assets.addTexture(Constants.TEXTURE_ENEMY, t);
-			}
-			
-			g.addChild(_gfx = new ImageGfx(g.assets.getTexture(Constants.TEXTURE_ENEMY)));
+			_transform = _owner.getComponent(TransformComponent);
+			if(!_gfx) _gfx = new ParticleGfx(g.assets.getXml("enemyPex"), g.assets.getTexture("enemyTex"), false);
+			if(!_explodeGfx) _explodeGfx = new ParticleGfx(g.assets.getXml("explodePex"), g.assets.getTexture("explodeTex"), false);
+			g.addChild(_gfx);
+			g.addChild(_explodeGfx);
+			_gfx.start();
 		}
 		
 		/**
@@ -68,9 +61,10 @@ package me.ianmcgregor.tenseconds.spatials {
 		 * @return 
 		 */
 		override public function render(g : GameContainer) : void {
-			_gfx.x = _transform.x - g.camera.x;
-			_gfx.y = _transform.y - g.camera.y;
-			_gfx.rotation = _transform.rotation + Math.PI * 0.5;
+			g;
+			_gfx.x = _transform.x;// - g.camera.x;
+			_gfx.y = _transform.y;// - g.camera.y;
+//			_gfx.rotation = _transform.rotation + Math.PI * 0.5;
 		}
 
 		/**
@@ -83,8 +77,23 @@ package me.ianmcgregor.tenseconds.spatials {
 		override public function remove(g : GameContainer) : void {
 			if(g.contains(_gfx)) {
 				g.removeChild(_gfx);
+				_gfx.stop(false);
+				
 				Audio.play(Explosion14, 0.5);
+				_explodeGfx.start(0.4);
+				_explodeGfx.x = _gfx.x;
+				_explodeGfx.y = _gfx.y;
+				_explodeGfx.addEventListener(Event.COMPLETE, onExplodeComplete);
 			}
+		}
+
+		private function onExplodeComplete(event : Event) : void {
+			event;
+			_explodeGfx.removeEventListener(Event.COMPLETE, onExplodeComplete);
+			_explodeGfx.stop(true);
+			_explodeGfx.parent.removeChild(_explodeGfx);
+			
+			ObjectPool.dispose(this);
 		}
 	}
 }

@@ -148,6 +148,14 @@ package me.ianmcgregor.games.artemis.systems {
 			 * spatialForm 
 			 */
 			var spatialForm : SpatialFormComponent = _spatialFormMapper.get(e);
+
+			/**
+			 * ObjectPool 
+			 */
+			if(spatialForm.useObjectPool) {
+				return spatialForm.getFromObjectPool(_world, e); 
+			}
+			
 			/**
 			 * SpatialFormClass 
 			 */

@@ -16,11 +16,13 @@ package me.ianmcgregor.tenseconds.constants {
 		public static const BEAM : String = "BEAM";
 
 
-		public static const ENEMY_RADIUS : Number = 20;
-		public static const TEXTURE_ENEMY : String = "TEXTURE_ENEMY";
-		public static const TEXTURE_TOWER : String = "TEXTURE_TOWER";
-		public static const TEXTURE_TOWER_SELECTED_1 : String = "TEXTURE_TOWER_SELECTED_1";
-		public static const TEXTURE_TOWER_SELECTED_2 : String = "TEXTURE_TOWER_SELECTED_2";
+		public static const ENEMY_RADIUS : Number = 28;
+//		public static const TEXTURE_ENEMY : String = "TEXTURE_ENEMY";
+		public static const TEXTURE_TOWER : String = "tower";
+		public static const TEXTURE_TOWER_SELECTED_1 : String = "tower_p1";
+		public static const TEXTURE_TOWER_SELECTED_2 : String = "tower_p2";
+		public static const BEAM_LENGTH : Number = 500;
+		public static const MAX_ENEMIES : int = 100;
 	
 	
 	}

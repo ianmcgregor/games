@@ -6,15 +6,21 @@ package me.ianmcgregor.tenseconds.spatials.gfx.template {
 	/**
 	 * @author McFamily
 	 */
-	public class ParticleGfx extends PDParticleSystem {
-		public function ParticleGfx(pex: XML, tex: Texture) {
+	public final class ParticleGfx extends PDParticleSystem {
+		public function ParticleGfx(pex: XML, tex: Texture, startNow: Boolean = true, duration:Number=Number.MAX_VALUE) {
 			super(pex, tex);
-			Starling.juggler.add(this);
 
 			pivotX = width * 0.5;
 			pivotY = height * 0.5;
 			
-			start();
+			if(startNow) {
+				start(duration);
+			}
+		}
+		
+		override public function start(duration : Number = Number.MAX_VALUE) : void {
+			Starling.juggler.add(this);
+			super.start(duration);
 		}
 		
 		override public function stop(clearParticles:Boolean=false): void {

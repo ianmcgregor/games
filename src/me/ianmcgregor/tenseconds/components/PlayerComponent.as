@@ -10,6 +10,8 @@ package me.ianmcgregor.tenseconds.components {
 		 */
 		public var playerNum : int;
 		public var selectedTower : int;
+		public var lastRotation : int;
+		public var rotationVelocity : Number = 0.02;
 
 		/**
 		 * PlayerComponent 
@@ -20,7 +22,7 @@ package me.ianmcgregor.tenseconds.components {
 		 */
 		public function PlayerComponent(playerNum : int) {
 			this.playerNum = playerNum;
-			if(playerNum == 2) selectedTower = 3;
+			selectedTower = playerNum;
 		}
 	}
 }

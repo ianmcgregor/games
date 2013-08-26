@@ -1,4 +1,6 @@
 package me.ianmcgregor.tenseconds.spatials {
+	import me.ianmcgregor.tenseconds.spatials.gfx.template.ParticleGfx;
+	import starling.filters.BlurFilter;
 	import me.ianmcgregor.games.artemis.components.HealthComponent;
 	import me.ianmcgregor.games.artemis.components.TransformComponent;
 	import me.ianmcgregor.games.artemis.spatials.Spatial;
@@ -37,6 +39,8 @@ package me.ianmcgregor.tenseconds.spatials {
 		private var _selectedGfx1 : ImageGfx;
 		private var _tower : TowerComponent;
 		private var _selectedGfx2 : ImageGfx;
+		private var _engineGfx : ParticleGfx;
+		private var _player : TextField;
 		
 		/**
 		 * HeroSpatial 
@@ -63,35 +67,32 @@ package me.ianmcgregor.tenseconds.spatials {
 			_beam = _owner.getComponent(BeamComponent);
 			_health = _owner.getComponent(HealthComponent);
 			_tower = _owner.getComponent(TowerComponent);
-			//
-			if(!g.assets.getTexture(Constants.TEXTURE_TOWER)) {
-				g.assets.addTexture(Constants.TEXTURE_TOWER, Texture.fromColor(64, 64, 0xFFFF00FF));
-			}
-			if(!g.assets.getTexture(Constants.TEXTURE_TOWER_SELECTED_1)) {
-				g.assets.addTexture(Constants.TEXTURE_TOWER_SELECTED_1, Texture.fromColor(64, 64, 0xFFFFFF00));
-			}
-			if(!g.assets.getTexture(Constants.TEXTURE_TOWER_SELECTED_2)) {
-				g.assets.addTexture(Constants.TEXTURE_TOWER_SELECTED_2, Texture.fromColor(64, 64, 0xFF00FFFF));
-			}
 			// gfx
 			g.addChild(_gfx = new Sprite());
 			_gfx.touchable = false;
+			_gfx.addChild(_beamGfx = new Image(Texture.fromColor(1, Constants.BEAM_LENGTH, 0xFFFFAA00)));
+			_beamGfx.pivotY = _beamGfx.height;
+			_beamGfx.filter = BlurFilter.createGlow(0xFFFFAA00, 1, 2, 1);
+			_gfx.addChild(_engineGfx = new ParticleGfx(g.assets.getXml('towerPex'), g.assets.getTexture('towerTex')));
+			_engineGfx.y = -10;
 			_gfx.addChild(_towerGfx = new ImageGfx(g.assets.getTexture(Constants.TEXTURE_TOWER)));
 			_gfx.addChild(_selectedGfx1 = new ImageGfx(g.assets.getTexture(Constants.TEXTURE_TOWER_SELECTED_1)));
 			_gfx.addChild(_selectedGfx2 = new ImageGfx(g.assets.getTexture(Constants.TEXTURE_TOWER_SELECTED_2)));
+			_towerGfx.y = _selectedGfx1.y = _selectedGfx2.y = 18;
 			_selectedGfx1.visible = false;
-			_gfx.addChild(_beamGfx = new Image(Texture.fromColor(1, 1000, 0xFFFFFF00)));
-			_beamGfx.pivotY = _beamGfx.height;
-			_gfx.addChild(_timeLeft = new Bar(68, 8, 0x00FFFF, 0xFF00FF));
+			_gfx.addChild(_timeLeft = new Bar(68, 6, 0x333333, 0xEEEEEE));
 			_timeLeft.pivotX = _timeLeft.width * 0.5;
-			_timeLeft.y = 34;
-			_gfx.addChild(_text = new TextField(28, 10, "", Constants.FONT, -1, 0xFFFF00));
+			_timeLeft.y = 46;
+			_gfx.addChild(_text = new TextField(28, 10, "", Constants.FONT, -1, 0xFFFFFF));
 			_text.hAlign = "left";
-			_gfx.addChild(_textSecs = new TextField(42, 10, "SECONDS", Constants.FONT, -1, 0xFFFF00));
+			_gfx.addChild(_textSecs = new TextField(42, 10, "SECONDS", Constants.FONT, -1, 0xFFFFFF));
 			//_text.pivotX = _text.width * 0.5;
 			_text.x = -34;
 			_textSecs.x = -7;
 			_text.y = _textSecs.y = _timeLeft.y + _timeLeft.height;
+			_gfx.addChild(_player = new TextField(50, 10, "", Constants.FONT, -1, 0xFFFFFF));
+			_player.pivotX = _player.width * 0.5;
+			_player.y = _timeLeft.y - 10;
 		}
 		
 		/**
@@ -106,8 +107,25 @@ package me.ianmcgregor.tenseconds.spatials {
 			_gfx.y = _transform.y - g.camera.y;
 			_beamGfx.rotation = _transform.rotation;// + Math.PI * 0.5;
 			_beamGfx.visible = _beam.getOn();
-			_selectedGfx1.visible = _tower.playerSelected == 1;
-			_selectedGfx2.visible = _tower.playerSelected == 2;
+			var playerSelected : int = _tower.playerSelected;
+			_towerGfx.visible = playerSelected == 0;
+			_selectedGfx1.visible = playerSelected == 1;
+			_selectedGfx2.visible = playerSelected == 2;
+			
+			if(!_beam.alive && _engineGfx.isEmitting) {
+//				_engineGfx.numParticles --;
+//				if(_engineGfx.numParticles == 0) {
+					_engineGfx.stop(true);
+//				}
+			}
+			
+			if(playerSelected == 1) {
+				_player.text = 'PLAYER 1';
+			} else if(playerSelected == 2) {
+				_player.text = 'PLAYER 2';
+			} else {
+				_player.text = '';
+			}
 			update();
 		}
 

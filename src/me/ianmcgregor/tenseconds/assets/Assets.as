@@ -20,6 +20,23 @@ package me.ianmcgregor.tenseconds.assets {
 		[Embed(source="sprites.xml", mimeType="application/octet-stream")]
 		public static const spritesXML : Class;
 		
+		// enemy
+		[Embed(source="particles/enemy/texture.png")]
+		public static const enemyTex : Class;
+		[Embed(source="particles/enemy/particle.pex", mimeType="application/octet-stream")]
+		public static const enemyPex : Class;
+
+		[Embed(source="particles/explode/texture.png")]
+		public static const explodeTex : Class;
+		[Embed(source="particles/explode/particle.pex", mimeType="application/octet-stream")]
+		public static const explodePex : Class;
+
+		// tower
+		[Embed(source="particles/tower/texture.png")]
+		public static const towerTex : Class;
+		[Embed(source="particles/tower/particle.pex", mimeType="application/octet-stream")]
+		public static const towerPex : Class;
+		
 		/**
 		 * createTextureAtlas 
 		 * 
