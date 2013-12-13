@@ -122,7 +122,6 @@ package me.ianmcgregor.tenseconds.systems {
 					g.lineTo(t.x + circle.x, t.y + circle.y);
 					
 					// perpendicular distance from beam to circle
-					// var project : Number = dotProduct(circle, leftNormal);
 					project = MathUtils.dotProduct(circle.x, circle.y, leftNormal.x, leftNormal.y);
 					collision = MathUtils.abs(project) < radius;
 					//	trace('project: ' + (project), 'collision:',(MathUtils.abs(project) < 10));

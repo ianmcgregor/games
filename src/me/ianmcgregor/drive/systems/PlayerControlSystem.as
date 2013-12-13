@@ -139,7 +139,7 @@ package me.ianmcgregor.drive.systems {
 			var up : Boolean = player1 ? _input.isDown(KeyConstants.UP_P1) : _input.isDown(KeyConstants.UP_P2);
 			var down : Boolean = player1 ? _input.isDown(KeyConstants.DOWN_P1) : _input.isDown(KeyConstants.DOWN_P2);
 			var shoot : Boolean = player1 ? _input.isDown(KeyConstants.A_P1) : _input.isDown(KeyConstants.A_P2);
-			var b : Boolean = player1 ? _input.isDown(KeyConstants.B_P1) : _input.isDown(KeyConstants.B_P2);
+//			var b : Boolean = player1 ? _input.isDown(KeyConstants.B_P1) : _input.isDown(KeyConstants.B_P2);
 //			var left : Boolean = _input.isDown(KeyConstants.LEFT_P1) || _input.isDown(KeyConstants.LEFT_P2);
 //			var right : Boolean = _input.isDown(KeyConstants.RIGHT_P1) || _input.isDown(KeyConstants.RIGHT_P2);
 //			var up : Boolean = _input.isDown(KeyConstants.UP_P1) || _input.isDown(KeyConstants.UP_P2);

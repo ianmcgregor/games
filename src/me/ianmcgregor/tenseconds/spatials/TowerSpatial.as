@@ -106,7 +106,9 @@ package me.ianmcgregor.tenseconds.spatials {
 			_gfx.x = _transform.x - g.camera.x;
 			_gfx.y = _transform.y - g.camera.y;
 			_beamGfx.rotation = _transform.rotation;// + Math.PI * 0.5;
-			_beamGfx.visible = _beam.getOn();
+//			_beamGfx.visible = _beam.getOn();
+			_beamGfx.scaleY = _beam.getOn() ? 1 : 0.05;
+			_beamGfx.alpha = _beam.getOn() ? 1 : 0.6;
 			var playerSelected : int = _tower.playerSelected;
 			_towerGfx.visible = playerSelected == 0;
 			_selectedGfx1.visible = playerSelected == 1;

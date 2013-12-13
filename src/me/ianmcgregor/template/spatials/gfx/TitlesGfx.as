@@ -10,7 +10,6 @@ package me.ianmcgregor.template.spatials.gfx {
 	import starling.text.BitmapFont;
 	import starling.text.TextField;
 	import starling.text.TextFieldAutoSize;
-	import starling.utils.HAlign;
 
 	/**
 	 * @author ianmcgregor

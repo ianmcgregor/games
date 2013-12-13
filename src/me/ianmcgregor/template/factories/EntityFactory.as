@@ -1,5 +1,4 @@
 package me.ianmcgregor.template.factories {
-	import me.ianmcgregor.games.artemis.components.ExpiresComponent;
 	import me.ianmcgregor.games.artemis.components.HealthComponent;
 	import me.ianmcgregor.games.artemis.components.SpatialFormComponent;
 	import me.ianmcgregor.games.artemis.components.TransformComponent;
@@ -8,11 +7,8 @@ package me.ianmcgregor.template.factories {
 	import me.ianmcgregor.template.components.GameConfigComponent;
 	import me.ianmcgregor.template.components.GameOverComponent;
 	import me.ianmcgregor.template.components.HUDComponent;
-	import me.ianmcgregor.template.components.PhysicsComponent;
 	import me.ianmcgregor.template.components.PlayerComponent;
 	import me.ianmcgregor.template.components.TitlesComponent;
-	import me.ianmcgregor.template.components.VelocityComponent;
-	import me.ianmcgregor.template.constants.Constants;
 	import me.ianmcgregor.template.constants.EntityGroup;
 	import me.ianmcgregor.template.constants.EntityTag;
 	import me.ianmcgregor.template.spatials.BgSpatial;

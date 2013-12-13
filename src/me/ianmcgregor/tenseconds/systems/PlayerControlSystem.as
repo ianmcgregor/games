@@ -41,7 +41,7 @@ package me.ianmcgregor.tenseconds.systems {
 		
 		//
 		private var _maxRotation: Number = Math.PI * 0.3;
-		private var _rotationIncrement : Number = 0.01;
+//		private var _rotationIncrement : Number = 0.01;
 
 		/**
 		 * HeroControlSystem 
@@ -97,29 +97,19 @@ package me.ianmcgregor.tenseconds.systems {
 			
 			var towers: IImmutableBag = _world.getGroupManager().getEntities(EntityGroup.TOWERS);
 			if(down) {
+				// deselect
 				TowerComponent(towers.get(player.selectedTower).getComponent(TowerComponent)).playerSelected = 0;
 				selectNewTower(player, towers);
-				if(TowerComponent(towers.get(player.selectedTower).getComponent(TowerComponent)).playerSelected != 0) {
-					selectNewTower(player, towers);
-				}
 			}
 			var t: Entity = towers.get(player.selectedTower);
 			var transform: TransformComponent = _transformMapper.get(t);
 			
 			if (left) {
-				if(player.lastRotation == 1) player.rotationVelocity = _rotationIncrement * 2;
-				player.lastRotation = -1;
 				transform.rotation -= player.rotationVelocity;
-				player.rotationVelocity += _rotationIncrement;
 				if(transform.rotation < -_maxRotation) transform.rotation = -_maxRotation;
 			} else if (right) {
-				if(player.lastRotation == -1) player.rotationVelocity = _rotationIncrement * 2;
-				player.lastRotation = 1;
 				transform.rotation += player.rotationVelocity;
-				player.rotationVelocity += _rotationIncrement;
 				if(transform.rotation > _maxRotation) transform.rotation = _maxRotation;
-			} else {
-				player.rotationVelocity = _rotationIncrement * 2;
 			}
 			
 			var tower: TowerComponent = t.getComponent(TowerComponent);
@@ -133,8 +123,15 @@ package me.ianmcgregor.tenseconds.systems {
 
 		private function selectNewTower(player : PlayerComponent, towers : IImmutableBag) : void {
 			player.selectedTower++;
-			if (player.selectedTower >= towers.size())
+			if (player.selectedTower >= towers.size()) {
 				player.selectedTower = 0;
+			}
+			var e: Entity = towers.get(player.selectedTower);
+			var t: TowerComponent = e.getComponent(TowerComponent);
+			var b : BeamComponent = e.getComponent(BeamComponent);
+			if(t.playerSelected != 0 || !b.alive) {
+				selectNewTower(player, towers);
+			}
 		}
 	}
 }
